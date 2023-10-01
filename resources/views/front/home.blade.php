@@ -4,7 +4,7 @@
     <div class="slider">
         <div class="slide-carousel owl-carousel">
             @foreach($slide_all as $item)
-                <div class="item" style="background-image:url({{ asset('uploads/'.$item->photo) }});">
+                <div class="item" style="height: 400px; background-image:url({{ asset('uploads/'.$item->photo) }}); ">
                     <div class="bg"></div>
                     <div class="text">
                         <h2>{{ $item->heading }}</h2>
@@ -22,47 +22,7 @@
         </div>
     </div>
 
-    <div class="search-section">
-        <div class="container">
-            <form action="cart.html" method="post">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <select name="" class="form-select">
-                                    <option value="">Выберите комнату</option>
-                                    <option value="">Стандартный номер</option>
-                                    <option value="">Улучшенный номер </option>
-                                    <option value="">Стандартный четырехместный номер</option>
-                                    <option value="">Улучшенный четырехместный номер</option>
-                                    <option value="">VIP-номер</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="form-group">
-                                <input type="text" name="checkin_checkout" class="form-control daterange1" placeholder="Регистрация и оформление заказа">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <input type="number" name="" class="form-control" min="1" max="30" placeholder="Взрослые">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <div class="form-group">
-                                <input type="number" name="" class="form-control" min="1" max="30" placeholder="Дети">
-                            </div>
-                        </div>
-                        <div class="col-lg-2">
-                            <button type="submit" class="btn btn-primary">Заказать</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
+   
 
 
     <div class="home-feature">
@@ -164,33 +124,59 @@
             </div>
         </div>
     </div>
-
-
-
-    <div class="home-rooms">
+    <div class="testimonial" style="margin-top: 0px; padding-top: 0px; margin-bottom: 10px">
+              
+    </div>
+    <div class="search-section">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="main-header">Размещение</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
+            <form action="cart.html" method="post">
+                <div class="inner">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <select name="" class="form-select">
+                                    <option value="">Выберите комнату</option>
+                                    <option value="">Стандартный номер</option>
+                                    <option value="">Улучшенный номер </option>
+                                    <option value="">Стандартный четырехместный номер</option>
+                                    <option value="">Улучшенный четырехместный номер</option>
+                                    <option value="">VIP-номер</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <input type="text" name="checkin_checkout" class="form-control daterange1" placeholder="Регистрация и оформление заказа">
                             </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <input type="number" name="" class="form-control" min="1" max="30" placeholder="Взрослые">
                             </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <input type="number" name="" class="form-control" min="1" max="30" placeholder="Дети">
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn btn-primary">Заказать</button>
                         </div>
                     </div>
                 </div>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="home-rooms">
+         
+        <div class="container">
+            <div class="row">
+               
+            </div>
+            
+            <div class="row">
                 <div class="col-md-3">
                     <div class="inner">
                         <div class="photo">
@@ -211,22 +197,6 @@
                     <div class="inner">
                         <div class="photo">
                             <img src="uploads/3.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная  кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/4.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="">Стандартная  кровать</a></h2>
@@ -271,38 +241,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/7.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <div class="row">
                 <div class="col-md-12">

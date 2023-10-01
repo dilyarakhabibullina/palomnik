@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\AdminProfileController;
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
-
+Route::get('/prayorder', [HomeController::class, 'prayorder'])->name('prayorder');
 
 /* Admin */
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home')->middleware('admin:admin');
