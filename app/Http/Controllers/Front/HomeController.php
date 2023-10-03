@@ -18,8 +18,4 @@ class HomeController extends Controller
         return view('front.home', compact('slide_all'));
     }
 
-    public function prayorder()
-    {//$slide_all = Slide::get();
-        return view('front.prayorder');
-    }
-}
+  }
