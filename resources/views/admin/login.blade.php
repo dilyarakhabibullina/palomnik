@@ -36,7 +36,7 @@
                                 <form method="POST" action="{{ route('admin_login_submit') }}">
                                     @csrf
                                     <div class="form-group">
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Адресс эл.почты" value="{{ old('email') }}" autofocus>
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Адрес эл.почты" value="{{ old('email') }}" autofocus>
                                         @error('email')
                                             <div class="text-danger">{{ $message }}</div>
                                         @enderror
