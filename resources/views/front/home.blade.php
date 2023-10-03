@@ -42,17 +42,6 @@
                 </div>
                 <div class="col-md-3">
                     <div class="inner">
-                        <div class="icon"><i class="fa fa-money"></i></div>
-                        <div class="text">
-                            <h2>Сделать пожертвование</h2>
-                            <p>
-                                 На нашем сайте можно сделать пожертвование на выбранный Вами религиозный объект, деньги поступят в течение нескольких секунд
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
                         <div class="icon"><i class="fa fa-cubes"></i></div>
                         <div class="text">
                             <h2>Молельные залы</h2>
@@ -86,40 +75,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-wifi"></i></div>
-                        <div class="text">
-                            <h2>Все для совершения обрядов</h2>
-                            <p>
-                            Участники получают доступ к эксклюзивным скидкам проекта Visit Tatarstan.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-coffee"></i></div>
-                        <div class="text">
-                            <h2>Национальная татарская одежда и сувениры</h2>
-                            <p>
-                            Питание по религиозным стандартам в зависимости от выбранной программы
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-               
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-cutlery"></i></div>
-                        <div class="text">
-                            <h2>Питание по стандартам халяль</h2>
-                            <p>
-                                Соблюдаем все стандарты питания!
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -271,7 +226,7 @@
                                 <img src="uploads/t1.jpg" alt="">
                             </div>
                             <div class="text">
-                                <h4>Надежда Круглова</h4>
+                                <h4>Вера Белоцерковская</h4>
                                 <p>Москва </p>
                             </div>
                             <div class="description">
