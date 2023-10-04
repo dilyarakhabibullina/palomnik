@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Dashboard')
+@section('heading', 'Панель администратора')
 
 @section('main_content')
 

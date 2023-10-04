@@ -135,7 +135,7 @@
                 <div class="col-md-3">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/2.jpg" alt="">
+                            <img src="uploads/1.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="">Стандартная кровать</a></h2>
@@ -151,7 +151,7 @@
                 <div class="col-md-3">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/3.jpg" alt="">
+                            <img src="uploads/1.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="">Стандартная  кровать</a></h2>
@@ -167,7 +167,7 @@
                 <div class="col-md-3">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/5.jpg" alt="">
+                            <img src="uploads/1.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="">Стандартная  кровать</a></h2>
@@ -183,7 +183,7 @@
                 <div class="col-md-3">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/6.jpg" alt="">
+                            <img src="uploads/1.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="">Стандартная  кровать</a></h2>
@@ -269,7 +269,7 @@
                 <div class="col-md-4">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
+                            <img src="uploads/blog1.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="post.html">Это пример заголовка записи в блоге</a></h2>
@@ -287,7 +287,7 @@
                 <div class="col-md-4">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/2.jpg" alt="">
+                            <img src="uploads/blog2.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="post.html">Это пример заголовка записи в блоге</a></h2>
@@ -305,7 +305,7 @@
                 <div class="col-md-4">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/3.jpg" alt="">
+                            <img src="uploads/blog3.jpg" alt="">
                         </div>
                         <div class="text">
                             <h2><a href="post.html">Это пример заголовка записи в блоге</a></h2>
