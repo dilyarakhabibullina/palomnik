@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <title>Веб сайт религиозного туризма</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
+    <link rel="icon" type="image/png"  href="{{ asset('uploads/favicon.png') }}">
 
     @include('front.layout.styles')
 
@@ -16,7 +16,14 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500&display=swap" rel="stylesheet">
 
-   
+    <!-- Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84213520-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-84213520-6');
+    </script> -->
 
 </head>
 <body>
@@ -60,7 +67,7 @@
                     <img src="uploads/logo1.png" alt="">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item ">
                             <a href="{{route('home')}}" class="nav-link">Главная страница</a>
                         </li>

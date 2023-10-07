@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Адрес эл.почты</title>
+    <title>Адресс эл.почты</title>
 </head>
 <body>
     <p>{!! $body !!}</p>

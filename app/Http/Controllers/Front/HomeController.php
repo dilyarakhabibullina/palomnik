@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $slide_all = Slide::get();
-        return view('front.home', compact('slide_all'));
+        $feature_all = Feature::get();
+        return view('front.home', compact('slide_all','feature_all'));
     }
-
-  }
+}

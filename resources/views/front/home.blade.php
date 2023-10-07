@@ -4,7 +4,7 @@
     <div class="slider">
         <div class="slide-carousel owl-carousel">
             @foreach($slide_all as $item)
-                <div class="item" style="height: 400px; background-image:url({{ asset('uploads/'.$item->photo) }}); ">
+                <div class="item" style="background-image:url({{ asset('uploads/'.$item->photo) }});">
                     <div class="bg"></div>
                     <div class="text">
                         <h2>{{ $item->heading }}</h2>
@@ -22,65 +22,30 @@
         </div>
     </div>
 
-   
+
+
 
 
     <div class="home-feature">
         <div class="container">
             <div class="row">
-               
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-superpowers"></i></div>
-                        <div class="text">
-                            <h2>Экскурсии по религиозным местам Казани</h2>
-                            <p>
-                                На нашем сайте можно заказать экскурсию по религиозным местам Казани с квалифицированным экскурсоводом
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-cubes"></i></div>
-                        <div class="text">
-                            <h2>Молельные залы</h2>
-                            <p>
-                                Выберите зал и время для уединенной молитвы
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-crosshairs"></i></div>
-                        <div class="text">
-                            <h2>Религиозная литература</h2>
-                            <p>
-                                Можно заказать книгу по выбранной вами тематике
-                            </p>
+                @foreach($feature_all as $item)
+                    <div class="col-md-3">
+                        <div class="inner">
+                            <div class="icon"><i class="{{ $item->icon }}"></i></div>
+                            <div class="text">
+                                <h2>{{ $item->heading }}</h2>
+                                <p>
+                                    {!! $item->text !!}
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="icon"><i class="fa fa-clock-o"></i></div>
-                        <div class="text">
-                            <h2>Оставить заявку на молитву</h2>
-                            <p>
-                                Здесь Вы можете выбрать вид молитвы, разместить список Ваших родных и желаемый храм, либо мечеть
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                </div>
             </div>
         </div>
-    </div>
-    <div class="testimonial" style="margin-top: 0px; padding-top: 0px; margin-bottom: 10px">
-              
     </div>
     <div class="search-section">
         <div class="container">
@@ -91,10 +56,10 @@
                             <div class="form-group">
                                 <select name="" class="form-select">
                                     <option value="">Выберите комнату</option>
-                                    <option value="">Стандартный номер</option>
-                                    <option value="">Улучшенный номер </option>
+                                    <option value="">Стандартная спальня для пары</option>
+                                    <option value="">Двухместный номер Делюкс для пары</option>
                                     <option value="">Стандартный четырехместный номер</option>
-                                    <option value="">Улучшенный четырехместный номер</option>
+                                    <option value="">Четырехместный номер Делюкс</option>
                                     <option value="">VIP-номер</option>
                                 </select>
                             </div>
@@ -122,15 +87,13 @@
             </form>
         </div>
     </div>
-
-
     <div class="home-rooms">
-         
+
         <div class="container">
             <div class="row">
-               
+
             </div>
-            
+
             <div class="row">
                 <div class="col-md-3">
                     <div class="inner">
@@ -196,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -215,7 +178,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="main-header">Отзывы наших клиентов</h2>
+                    <h2 class="main-header">Наши довольные клиенты</h2>
                 </div>
             </div>
             <div class="row">
@@ -226,7 +189,7 @@
                                 <img src="uploads/t1.jpg" alt="">
                             </div>
                             <div class="text">
-                                <h4>Вера Белоцерковская</h4>
+                                <h4>Надежда Круглова</h4>
                                 <p>Москва </p>
                             </div>
                             <div class="description">
@@ -240,8 +203,8 @@
                                 <img src="uploads/t2.jpg" alt="">
                             </div>
                             <div class="text">
-                                <h4>Моххамед аль Фаррах</h4>
-                                <p>Арабские Эмираты</p>
+                                <h4>Игорь Петров</h4>
+                                <p>Петербург</p>
                             </div>
                             <div class="description">
                                 <p>
