@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('features', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->text('icon');
+            $table->text('photo');
             $table->text('heading');
-            $table->text('text')->nullable();
+            $table->text('short_content');
+            $table->text('content');
+            $table->integer('total_view');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('features');
+        Schema::dropIfExists('posts');
     }
 };

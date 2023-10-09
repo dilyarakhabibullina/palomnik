@@ -173,51 +173,38 @@
 
 
 
-    <div class="testimonial" style="background-image: url(public/uploads/slide2.jpg)">
-        <div class="bg"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="main-header">Наши довольные клиенты</h2>
+        <div class="testimonial" style="background-image: url(uploads/slide2.jpg)">
+            <div class="bg"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="main-header">Отзывы клиентов</h2>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="testimonial-carousel owl-carousel">
-                        <div class="item">
-                            <div class="photo">
-                                <img src="uploads/t1.jpg" alt="">
-                            </div>
-                            <div class="text">
-                                <h4>Надежда Круглова</h4>
-                                <p>Москва </p>
-                            </div>
-                            <div class="description">
-                                <p>
-                                    Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens. Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="photo">
-                                <img src="uploads/t2.jpg" alt="">
-                            </div>
-                            <div class="text">
-                                <h4>Игорь Петров</h4>
-                                <p>Петербург</p>
-                            </div>
-                            <div class="description">
-                                <p>
-                                    Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens. Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens.
-                                </p>
-                            </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="testimonial-carousel owl-carousel">
+                            @foreach($testimonial_all as $item)
+                                <div class="item">
+                                    <div class="photo">
+                                        <img src="{{ asset('uploads/'.$item->photo) }}" alt="">
+                                    </div>
+                                    <div class="text">
+                                        <h4>{{ $item->name }}</h4>
+                                        <p>{{ $item->designation }}</p>
+                                    </div>
+                                    <div class="description">
+                                        <p>
+                                            {!! $item->comment !!}
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
 
 
 
@@ -225,68 +212,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="main-header">Последние сообщения</h2>
+                    <h2 class="main-header">Последние посты</h2>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/blog1.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="post.html">Это пример заголовка записи в блоге</a></h2>
-                            <div class="short-des">
-                                <p>
-                                    Если вы хотите получить какой-то хороший контент от жителей вашей страны, тогда просто внесите свой вклад в основное сообщество вашего народа, и я уверен, что вы получите от этого пользу.
-                                </p>
+
+                @foreach($post_all as $item)
+
+                    <div class="col-md-4">
+                        <div class="inner">
+                            <div class="photo">
+                                <img src="{{ asset('uploads/'.$item->photo) }}" alt="">
                             </div>
-                            <div class="button">
-                                <a href="post.html" class="btn btn-primary">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/blog2.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="post.html">Это пример заголовка записи в блоге</a></h2>
-                            <div class="short-des">
-                                <p>
-                                    Если вы хотите получить какой-то хороший контент от жителей вашей страны, тогда просто внесите свой вклад в основное сообщество вашего народа, и я уверен, что вы получите от этого пользу.
-                                </p>
-                            </div>
-                            <div class="button">
-                                <a href="post.html" class="btn btn-primary">Подробнее</a>
+                            <div class="text">
+                                <h2><a href="{{ route('post',$item->id) }}">{{ $item->heading }}</a></h2>
+                                <div class="short-des">
+                                    <p>
+                                        {!! $item->short_content !!}
+                                    </p>
+                                </div>
+                                <div class="button">
+                                    <a href="{{ route('post',$item->id) }}" class="btn btn-primary">Подробнее</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/blog3.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="post.html">Это пример заголовка записи в блоге</a></h2>
-                            <div class="short-des">
-                                <p>
-                                    Если вы хотите получить какой-то хороший контент от жителей вашей страны, тогда просто внесите свой вклад в основное сообщество вашего народа, и я уверен, что вы получите от этого пользу.
-                                </p>
-                            </div>
-                            <div class="button">
-                                <a href="post.html" class="btn btn-primary">Подробнее</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-
 
 
 @endsection

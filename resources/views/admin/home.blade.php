@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('heading', 'Панель')
+@section('heading', 'Dashboard')
 
 @section('main_content')
 

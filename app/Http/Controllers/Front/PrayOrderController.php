@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 class PrayOrderController extends Controller
 {
-    public function index() {
-        return view('front.prayorder');
+    public function indexMuslim() {
+        return view('front.prayorder_musulmun_prays');
     }
 }
