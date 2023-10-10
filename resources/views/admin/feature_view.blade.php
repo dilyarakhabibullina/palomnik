@@ -27,7 +27,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>
-                                        <i class="{{ $row->icon }} fz_40"></i>
+                                        <!-- <i class="{{ $row->icon }} fz_40"></i> -->
                                     </td>
                                     <td>
                                         {{ $row->heading }}

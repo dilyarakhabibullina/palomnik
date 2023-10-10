@@ -142,7 +142,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="blog.html" class="nav-link">Блог</a>
+                            <a href="{{route('blog')}}" class="nav-link">Блог</a>
                         </li>
                         <li class="nav-item">
                             <a href="contact.html" class="nav-link">Контакты</a>
@@ -166,7 +166,7 @@
                     <ul class="useful-links">
                         <li><a href="rooms.html">Размещение</a></li>
                         <li><a href="photo-gallery.html">Фотогалерея</a></li>
-                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="{{route('blog')}}">Блог</a></li>
                         <li><a href="contact.html">Контакты</a></li>
                     </ul>
                 </div>
