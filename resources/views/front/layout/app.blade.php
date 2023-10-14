@@ -134,15 +134,15 @@
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Галерея</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a href="photo-gallery.html" class="nav-link">Фотогалерея</a>
+                                    <a href="{{ route('photo_gallery') }}" class="nav-link">Фото галерея</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="video-gallery.html" class="nav-link">Видеогалерея</a>
+                                    <a href="{{ route('video_gallery') }}" class="nav-link">Видеогалерея</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('blog')}}" class="nav-link">Блог</a>
+                            <a href="{{ route('blog') }}" class="nav-link">Блог</a>
                         </li>
                         <li class="nav-item">
                             <a href="contact.html" class="nav-link">Контакты</a>
@@ -165,8 +165,9 @@
                     <h2 class="heading">Ссылки сайта</h2>
                     <ul class="useful-links">
                         <li><a href="rooms.html">Размещение</a></li>
-                        <li><a href="photo-gallery.html">Фотогалерея</a></li>
-                        <li><a href="{{route('blog')}}">Блог</a></li>
+                        <li><a href="{{ route('photo_gallery') }}">Фото галерея</a></li>
+                        <li><a href="{{ route('video_gallery') }}">Видио галерея</a></li>
+                        <li><a href="{{ route('blog') }}">Блог</a></li>
                         <li><a href="contact.html">Контакты</a></li>
                     </ul>
                 </div>
