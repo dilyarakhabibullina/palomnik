@@ -15,6 +15,7 @@
             <li class=""><a class="nav-link" href="{{ route('admin_post_view') }}" ><i class="fa fa-clipboard"></i> <span>Блог(посты)</span></a></li>
             <li class=""><a class="nav-link" href="{{ route('admin_photo_view') }}" ><i class="fa fa-picture-o"></i> <span>Фото галерея</span></a></li>
             <li class=""><a class="nav-link" href="{{ route('admin_video_view') }}" ><i class="fa fa-camera"></i> <span>Видео галерея</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('admin_faq_view') }}" ><i class="fa fa-bolt"></i> <span>Часто задаваемые вопросы</span></a></li>
         </ul>
     </aside>
 </div>

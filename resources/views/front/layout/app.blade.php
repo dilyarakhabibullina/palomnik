@@ -168,6 +168,7 @@
                         <li><a href="{{ route('photo_gallery') }}">Фото галерея</a></li>
                         <li><a href="{{ route('video_gallery') }}">Видио галерея</a></li>
                         <li><a href="{{ route('blog') }}">Блог</a></li>
+                        <li><a href="{{ route('faq') }}">Часто задаваемые вопросы</a></li>
                         <li><a href="contact.html">Контакты</a></li>
                     </ul>
                 </div>
