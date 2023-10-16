@@ -107,9 +107,11 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('about')}}" class="nav-link">О нас</a>
-                        </li>
+                        @if($global_page_data->about_status == 1)
+                            <li class="nav-item">
+                                <a href="{{ route('about') }}" class="nav-link">{{ $global_page_data->about_heading }}</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Комнаты</a>
                             <ul class="dropdown-menu">
@@ -178,7 +180,9 @@
                     <h2 class="heading">Полезные ссылки</h2>
                     <ul class="useful-links">
                         <li><a href="index.html">Главная страница</a></li>
-                        <li><a href="terms.html">Условия и положения</a></li>
+                        @if($global_page_data->terms_status == 1)
+                            <li><a href="{{ route('terms') }}">{{ $global_page_data->terms_heading }}</a></li>
+                        @endif
                         <li><a href="privacy.html">Политика конфиденциальности</a></li>
                         <li><a href="disclaimer.html">Отказ от ответственности</a></li>
                     </ul>
