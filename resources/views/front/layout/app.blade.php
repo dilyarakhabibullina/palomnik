@@ -183,7 +183,9 @@
                         @if($global_page_data->terms_status == 1)
                             <li><a href="{{ route('terms') }}">{{ $global_page_data->terms_heading }}</a></li>
                         @endif
-                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                        @if($global_page_data->privacy_status == 1)
+                            <li><a href="{{ route('privacy') }}">{{ $global_page_data->privacy_heading }}</a></li>
+                        @endif
                         <li><a href="disclaimer.html">Отказ от ответственности</a></li>
                     </ul>
                 </div>
