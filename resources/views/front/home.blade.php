@@ -54,13 +54,11 @@
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <select name="" class="form-select">
-                                    <option value="">Выберите комнату</option>
-                                    <option value="">Стандартная спальня для пары</option>
-                                    <option value="">Двухместный номер Делюкс для пары</option>
-                                    <option value="">Стандартный четырехместный номер</option>
-                                    <option value="">Четырехместный номер Делюкс</option>
-                                    <option value="">VIP-номер</option>
+                                <select name="room_id" class="form-select">
+                                    <option value="">Выбрать номер</option>
+                                    @foreach($room_all as $item)
+                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -88,90 +86,38 @@
         </div>
     </div>
     <div class="home-rooms">
-
         <div class="container">
-            <div class="row">
-
-            </div>
 
             <div class="row">
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная  кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная  кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="">Стандартная  кровать</a></h2>
-                            <div class="price">
-                                ₽100/Ночь
-                            </div>
-                            <div class="button">
-                                <a href="room-detail.html" class="btn btn-primary">Смотрите подробности</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @foreach($room_all as $item)
 
+                    <div class="col-md-3">
+                        <div class="inner">
+                            <div class="photo">
+                                <img src="{{ asset('uploads/'.$item->featured_photo) }}" alt="">
+                            </div>
+                            <div class="text">
+                                <h2><a href="{{ route('room_detail',$item->id) }}">{{ $item->name }}</a></h2>
+                                <div class="price">
+                                    ₽{{ $item->price }}/ночь
+                                </div>
+                                <div class="button">
+                                    <a href="{{ route('room_detail',$item->id) }}" class="btn btn-primary">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <div class="big-button">
-                        <a href="" class="btn btn-primary">Посмотреть все комнаты</a>
+                        <a href="{{ route('room') }}" class="btn btn-primary">Посмотреть все комнаты</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
         <div class="testimonial" style="background-image: url(uploads/slide2.jpg)">
             <div class="bg"></div>

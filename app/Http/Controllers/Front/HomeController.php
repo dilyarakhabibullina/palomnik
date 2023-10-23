@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Room;
 use Illuminate\Http\Request;
 use App\Models\Slide;
 use App\Models\Feature;
@@ -18,6 +19,7 @@ class HomeController extends Controller
         $feature_all = Feature::get();
         $testimonial_all = Testimonial::get();
         $post_all = Post::orderBy('id','desc')->limit(3)->get();
-        return view('front.home', compact('slide_all','feature_all','testimonial_all','post_all'));
+        $room_all = Room::get();
+        return view('front.home', compact('slide_all','feature_all','testimonial_all','post_all','room_all'));
     }
 }

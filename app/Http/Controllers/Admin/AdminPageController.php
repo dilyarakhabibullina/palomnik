@@ -76,4 +76,165 @@ class AdminPageController extends Controller
 
         return redirect()->back()->with('success', 'Данные успешно обновлены.');
     }
+
+    public function photo_gallery()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_photo_gallery', compact('page_data'));
+    }
+
+    public function photo_gallery_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->photo_gallery_heading = $request->photo_gallery_heading;
+        $obj->photo_gallery_status = $request->photo_gallery_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function video_gallery()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_video_gallery', compact('page_data'));
+    }
+
+    public function video_gallery_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->video_gallery_heading = $request->video_gallery_heading;
+        $obj->video_gallery_status = $request->video_gallery_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function faq()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_faq', compact('page_data'));
+    }
+
+    public function faq_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->faq_heading = $request->faq_heading;
+        $obj->faq_status = $request->faq_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function blog()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_blog', compact('page_data'));
+    }
+
+    public function blog_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->blog_heading = $request->blog_heading;
+        $obj->blog_status = $request->blog_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function room()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_room', compact('page_data'));
+    }
+
+    public function room_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->room_heading = $request->room_heading;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function cart()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_cart', compact('page_data'));
+    }
+
+    public function cart_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->cart_heading = $request->cart_heading;
+        $obj->cart_status = $request->cart_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function checkout()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_checkout', compact('page_data'));
+    }
+
+    public function checkout_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->checkout_heading = $request->checkout_heading;
+        $obj->checkout_status = $request->checkout_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function payment()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_payment', compact('page_data'));
+    }
+
+    public function payment_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->payment_heading = $request->payment_heading;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function signup()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_signup', compact('page_data'));
+    }
+
+    public function signup_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->signup_heading = $request->signup_heading;
+        $obj->signup_status = $request->signup_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+    public function signin()
+    {
+        $page_data = Page::where('id',1)->first();
+        return view('admin.page_signin', compact('page_data'));
+    }
+
+    public function signin_update(Request $request)
+    {
+        $obj = Page::where('id',1)->first();
+        $obj->signin_heading = $request->signin_heading;
+        $obj->signin_status = $request->signin_status;
+        $obj->update();
+
+        return redirect()->back()->with('success', 'Данные успешно обновлены.');
+    }
+
+
+
 }

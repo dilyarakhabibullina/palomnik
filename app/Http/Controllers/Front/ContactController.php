@@ -29,11 +29,11 @@ class ContactController extends Controller
         } else {
 
             // Send email
-            $subject = 'Contact form email';
-            $message = 'Visitor email information: <br>';
-            $message .= '<br>Name: '.$request->name;
-            $message .= '<br>Email: '.$request->email;
-            $message .= '<br>Message: '.$request->message;
+            $subject = 'Письмо из контактов ';
+            $message = ' Информация от посетителя: <br>';
+            $message .= '<br>Имя: '.$request->name;
+            $message .= '<br>Адрес эл.почты: '.$request->email;
+            $message .= '<br>Послание: '.$request->message;
 
             $admin_data = Admin::where('id',1)->first();
             $admin_email = $admin_data->email;

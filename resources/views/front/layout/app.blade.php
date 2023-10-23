@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <title>Веб сайт религиозного туризма</title>
 
-    <link rel="icon" type="image/png"  href="{{ asset('uploads/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('uploads/favicon.png') }}">
 
     @include('front.layout.styles')
 
@@ -39,10 +39,18 @@
             </div>
             <div class="col-md-6 right-side">
                 <ul class="right">
-                    <li class="menu"><a href="cart.html">Корзина</a></li>
-                    <li class="menu"><a href="checkout.html">Оформление</a></li>
-                    <li class="menu"><a href="signup.html">Зарегистрироваться</a></li>
-                    <li class="menu"><a href="login.html">Логин</a></li>
+                    @if($global_page_data->cart_status == 1)
+                    <li class="menu"><a href="cart.html">{{ $global_page_data->cart_heading }}</a></li>
+                    @endif
+                    @if($global_page_data->checkout_status == 1)
+                    <li class="menu"><a href="checkout.html">{{ $global_page_data->checkout_heading }}</a></li>
+                    @endif
+                    @if($global_page_data->signup_status == 1)
+                    <li class="menu"><a href="signup.html">{{ $global_page_data->signup_heading }}</a></li>
+                    @endif
+                    @if($global_page_data->signin_status == 1)
+                    <li class="menu"><a href="login.html">{{ $global_page_data->signin_heading }}</a></li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -64,35 +72,27 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img src="uploads/logo1.png" alt="">
+                    <img src="uploads/logo.png" alt="">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item ">
+                        <li class="nav-item">
                             <a href="{{route('home')}}" class="nav-link">Главная страница</a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">Экскурсии</a>
                         </li>
                         <li class="nav-item">
-                            <a href="javascript:void;" class="nav-link dropdown-toggle">Литература</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Мусульманская</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">Православная</a>
-                                </li>
-                            </ul>
+                            <a href="#" class="nav-link">Литература</a>
                         </li>
                         <li class="nav-item">
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Заказать</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Требы</a>
+                                    <a href="{{ route('indexTrebi') }}" class="nav-link">Православные требы</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Мусульманские молитвы</a>
+                                    <a href="{{ route('indexMuslimPrays') }}" class="nav-link">Мусульманскую молитву</a>
                                 </li>
                             </ul>
                         </li>
@@ -115,40 +115,45 @@
                         <li class="nav-item">
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Комнаты</a>
                             <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="room-detail.html" class="nav-link">Стандартная кровать</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="room-detail.html" class="nav-link">Две отдельные кровати</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="room-detail.html" class="nav-link">Стандартная кровать</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="room-detail.html" class="nav-link">Кровать для людей с ограниченными возможностями</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="room-detail.html" class="nav-link">Люкс «Премиум»</a>
-                                </li>
+                                @foreach($global_room_data as $item)
+                                    <li class="nav-item">
+                                        <a href="{{ route('room_detail',$item->id) }}" class="nav-link">{{ $item->name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="javascript:void;" class="nav-link dropdown-toggle">Галерея</a>
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a href="{{ route('photo_gallery') }}" class="nav-link">Фото галерея</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('video_gallery') }}" class="nav-link">Видеогалерея</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('blog') }}" class="nav-link">Блог</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">Контакты</a>
-                        </li>
+                        @if($global_page_data->photo_gallery_status == 1 || $global_page_data->video_gallery_status == 1)
+                            <li class="nav-item">
+                                <a href="javascript:void;" class="nav-link dropdown-toggle">Галереи</a>
+                                <ul class="dropdown-menu">
+
+                                    @if($global_page_data->photo_gallery_status == 1)
+                                        <li class="nav-item">
+                                            <a href="{{ route('photo_gallery') }}" class="nav-link">{{ $global_page_data->photo_gallery_heading }}</a>
+                                        </li>
+                                    @endif
+
+                                    @if($global_page_data->video_gallery_status == 1)
+                                        <li class="nav-item">
+                                            <a href="{{ route('video_gallery') }}" class="nav-link">{{ $global_page_data->video_gallery_heading }}</a>
+                                        </li>
+                                    @endif
+
+                                </ul>
+                            </li>
+                        @endif
+
+                        @if($global_page_data->blog_status == 1)
+                            <li class="nav-item">
+                                <a href="{{ route('blog') }}" class="nav-link">{{ $global_page_data->blog_heading }}</a>
+                            </li>
+                        @endif
+
+                        @if($global_page_data->contact_status == 1)
+                            <li class="nav-item">
+                                <a href="{{ route('contact') }}" class="nav-link">{{ $global_page_data->contact_heading }}</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </nav>
@@ -167,11 +172,21 @@
                     <h2 class="heading">Ссылки сайта</h2>
                     <ul class="useful-links">
                         <li><a href="rooms.html">Размещение</a></li>
-                        <li><a href="{{ route('photo_gallery') }}">Фото галерея</a></li>
-                        <li><a href="{{ route('video_gallery') }}">Видио галерея</a></li>
-                        <li><a href="{{ route('blog') }}">Блог</a></li>
-                        <li><a href="{{ route('faq') }}">Часто задаваемые вопросы</a></li>
-                        <li><a href="contact.html">Контакты</a></li>
+                        @if($global_page_data->photo_gallery_status == 1)
+                            <li><a href="{{ route('photo_gallery') }}">{{ $global_page_data->photo_gallery_heading }}</a></li>
+                        @endif
+
+                        @if($global_page_data->video_gallery_status == 1)
+                            <li><a href="{{ route('video_gallery') }}">{{ $global_page_data->video_gallery_heading }}</a></li>
+                        @endif
+
+                        @if($global_page_data->blog_status == 1)
+                            <li><a href="{{ route('blog') }}">{{ $global_page_data->blog_heading }}</a></li>
+                        @endif
+
+                        @if($global_page_data->contact_status == 1)
+                            <li><a href="{{ route('contact') }}">{{ $global_page_data->contact_heading }}</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -179,14 +194,18 @@
                 <div class="item">
                     <h2 class="heading">Полезные ссылки</h2>
                     <ul class="useful-links">
-                        <li><a href="index.html">Главная страница</a></li>
+                        <li><a href="{{ route('home') }}">Главная страница</a></li>
                         @if($global_page_data->terms_status == 1)
                             <li><a href="{{ route('terms') }}">{{ $global_page_data->terms_heading }}</a></li>
                         @endif
                         @if($global_page_data->privacy_status == 1)
                             <li><a href="{{ route('privacy') }}">{{ $global_page_data->privacy_heading }}</a></li>
                         @endif
-                        <li><a href="disclaimer.html">Отказ от ответственности</a></li>
+
+                        @if($global_page_data->faq_status == 1)
+                            <li><a href="{{ route('faq') }}">{{ $global_page_data->faq_heading }}</a></li>
+                        @endif
+
                     </ul>
                 </div>
             </div>
@@ -236,9 +255,11 @@
                     <p>
                         Чтобы быть в курсе последних новостей и других замечательных материалов, подпишитесь на нас здесь:
                     </p>
-                    <form action="" method="post">
+                    <form action="{{ route('subscriber_send_email') }}" method="post" class="form_subscribe_ajax">
+                        @csrf
                         <div class="form-group">
-                            <input type="text" name="" class="form-control">
+                            <input type="text" name="email" class="form-control">
+                            <span class="text-danger error-text email_error"></span>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Подписаться">
@@ -246,7 +267,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -261,6 +281,68 @@
 
 
 @include('front.layout.scripts_footer')
+
+@if(session()->get('error'))
+    <script>
+        iziToast.error({
+            title: '',
+            position: 'topRight',
+            message: '{{ session()->get('error') }}',
+        });
+    </script>
+@endif
+
+@if(session()->get('success'))
+    <script>
+        iziToast.success({
+            title: '',
+            position: 'topRight',
+            message: '{{ session()->get('success') }}',
+        });
+    </script>
+@endif
+
+<script>
+    (function($){
+        $(".form_subscribe_ajax").on('submit', function(e){
+            e.preventDefault();
+            $('#loader').show();
+            var form = this;
+            $.ajax({
+                url:$(form).attr('action'),
+                method:$(form).attr('method'),
+                data:new FormData(form),
+                processData:false,
+                dataType:'json',
+                contentType:false,
+                beforeSend:function(){
+                    $(form).find('span.error-text').text('');
+                },
+                success:function(data)
+                {
+                    $('#loader').hide();
+                    if(data.code == 0)
+                    {
+                        $.each(data.error_message, function(prefix, val) {
+                            $(form).find('span.'+prefix+'_error').text(val[0]);
+                        });
+                    }
+                    else if(data.code == 1)
+                    {
+                        $(form)[0].reset();
+                        iziToast.success({
+                            title: '',
+                            position: 'topRight',
+                            message: data.success_message,
+                        });
+                    }
+
+                }
+            });
+        });
+    })(jQuery);
+</script>
+<div id="loader"></div>
 
 </body>
 </html>
