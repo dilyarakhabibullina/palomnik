@@ -3,7 +3,5 @@
 @section('heading', 'Панель')
 
 @section('main_content')
-<div class="row">
 
-</div>
 @endsection

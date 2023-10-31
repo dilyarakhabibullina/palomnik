@@ -102,5 +102,34 @@ class AdminPrayorderController extends Controller
         return redirect()->back()->with('success', 'Заказанный треб удален.');
     }
 
+    public function sendmail(Request $request)
+    {
+
+
+        $prayorder_data= Prayorder::where('id', $request->id)->with('trebs', 'churches')->first();
+
+        foreach ($prayorder_data->trebs as $treb){
+            $treb_category = $treb->name;
+        };
+        foreach ($prayorder_data->churches as $church){
+            $church_name = $church->name;
+            $church_email = $church->email;
+        };
+
+        // Send email
+        $subject = 'Треба от сайта религиозного туризма ';
+        $message =  '<br><strong>Заказчик: </strong>'.$prayorder_data->name ;
+        $message .= '<br><strong>Категория требы: </strong>'.$treb_category;
+        $message .= '<br><strong>Адрес эл.почты заказчика: </strong>'.$prayorder_data ->email;
+        $message .= '<br><strong>Список имен: </strong>'.$prayorder_data->list_name;
+
+
+
+
+        \Mail::to($church_email)->send(new Websitemail($subject,$message));
+
+        return redirect()->back()->with('success', 'Заказанный треб послан в  '.$church_name);
+
+    }
 
 }

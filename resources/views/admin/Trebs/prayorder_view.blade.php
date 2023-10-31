@@ -53,6 +53,13 @@
                                         <button class="btn btn-warning" data-toggle="modal" data-target="#exampleModal{{ $i }}">Подробнее</button>
                                         <a href="{{ route('admin_prayorder_edit',$row->id) }}" class="btn btn-primary">Изменить</a>
                                         <a href="{{ route('admin_prayorder_delete',$row->id) }}" class="btn btn-danger" onClick="return confirm('Вы уверены?');">Удалить</a>
+                                        <form method="post" action="/admin/prayorder/view">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $row->id }}"/>
+                                            <button class="btn btn-primary" type="submit">
+                                                Послать письмо
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
 

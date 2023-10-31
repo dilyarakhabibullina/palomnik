@@ -25,7 +25,6 @@
 
 
 
-
     <div class="home-feature">
         <div class="container">
             <div class="row">
@@ -47,15 +46,17 @@
             </div>
         </div>
     </div>
+
     <div class="search-section">
         <div class="container">
-            <form action="cart.html" method="post">
+            <form action="{{ route('cart_submit') }}" method="post">
+                @csrf
                 <div class="inner">
                     <div class="row">
                         <div class="col-lg-3">
                             <div class="form-group">
                                 <select name="room_id" class="form-select">
-                                    <option value="">Выбрать номер</option>
+                                    <option value="">Выбрать комнату</option>
                                     @foreach($room_all as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                     @endforeach
@@ -64,30 +65,30 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="form-group">
-                                <input type="text" name="checkin_checkout" class="form-control daterange1" placeholder="Регистрация и оформление заказа">
+                                <input type="text" name="checkin_checkout" class="form-control daterange1" placeholder="Время заезда и выезда">
                             </div>
                         </div>
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <input type="number" name="" class="form-control" min="1" max="30" placeholder="Взрослые">
+                                <input type="number" name="adult" class="form-control" min="1" max="30" placeholder="Взрослые">
                             </div>
                         </div>
                         <div class="col-lg-2">
                             <div class="form-group">
-                                <input type="number" name="" class="form-control" min="1" max="30" placeholder="Дети">
+                                <input type="number" name="children" class="form-control" min="0" max="30" placeholder="Дети">
                             </div>
                         </div>
                         <div class="col-lg-2">
-                            <button type="submit" class="btn btn-primary">Заказать</button>
+                            <button type="submit" class="btn btn-primary">Забронировать</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+
     <div class="home-rooms">
         <div class="container">
-
             <div class="row">
                 @foreach($room_all as $item)
 
@@ -187,6 +188,16 @@
             </div>
         </div>
     </div>
-
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            <script>
+                iziToast.error({
+                    title: '',
+                    position: 'topRight',
+                    message: '{{ $error }}',
+                });
+            </script>
+        @endforeach
+    @endif
 
 @endsection

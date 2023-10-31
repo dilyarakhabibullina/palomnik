@@ -28,6 +28,7 @@ return new class extends Migration
             $table->text('featured_photo');
             $table->text('video_id')->nullable();
             $table->timestamps();
+            
         });
     }
 

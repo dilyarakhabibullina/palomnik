@@ -97,17 +97,18 @@
                     <div class="widget">
                         <h2>Стоимость номера за ночь</h2>
                         <div class="price">
-                            ₽{{ $single_room_data->price }}
+                            &#8381;{{ $single_room_data->price }}
                         </div>
                     </div>
                     <div class="widget">
-                        <h2>Забронировать этот номер</h2>
-                        <form action="#" method="post">
+                        <h2>Забронируйте этот номер</h2>
+                        <form action="{{ route('cart_submit') }}" method="post">
+                       
                             @csrf
                             <input type="hidden" name="room_id" value="{{ $single_room_data->id }}">
                             <div class="form-group mb_20">
-                                <label for="">Регистрация заезда и отъезда</label>
-                                <input type="text" name="checkin_checkout" class="form-control daterange1" placeholder="Регистрация и оформление заказа">
+                                <label for="">Время заезда и выезда</label>
+                                <input type="text" name="checkin_checkout" class="form-control daterange1" placeholder="Время заезда и выезда">
                             </div>
                             <div class="form-group mb_20">
                                 <label for="">Взрослые</label>

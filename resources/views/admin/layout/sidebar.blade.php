@@ -74,6 +74,16 @@
                     <li class="{{ Request::is('admin/muslimpray/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_muslimpray_view') }}"><i class="fa fa-angle-right"></i>Категория молитв</a></li>
                 </ul>
             </li>
+            <li class="{{ Request::is('admin/book/view')||Request::is('admin/author/view')||Request::is('admin/religion/view')||Request::is('admin/lang/view')||Request::is('admin/publisher/view')||Request::is('admin/genre/view') ? 'active' : '' }}"><a href="#" class="nav-link has-dropdown"><i class="fa fa-arrows"></i><span>Книги</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Request::is('admin/book/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_book_view') }}"><i class="fa fa-angle-right"></i>Книга</a></li>
+                    <li class="{{ Request::is('admin/author/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_author_view') }}"><i class="fa fa-angle-right"></i>Автор</a></li>
+                    <li class="{{ Request::is('admin/religion/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_religion_view') }}"><i class="fa fa-angle-right"></i>Религия</a></li>
+                    <li class="{{ Request::is('admin/lang/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_lang_view') }}"><i class="fa fa-angle-right"></i>Язык</a></li>
+                    <li class="{{ Request::is('admin/publisher/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_publisher_view') }}"><i class="fa fa-angle-right"></i>Издательство</a></li>
+                    <li class="{{ Request::is('admin/genre/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_genre_view') }}"><i class="fa fa-angle-right"></i>Жанр</a></li>
+                </ul>
+            </li>
         </ul>
     </aside>
 </div>
