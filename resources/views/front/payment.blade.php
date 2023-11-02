@@ -54,7 +54,7 @@
                 $total_price = 0;
                 for($i=0;$i<count($arr_cart_room_id);$i++)
                 {
-                    $room_data = DB::table('rooms')->where('id',$arr_cart_room_id[$i])->first();                            
+                    $room_data = DB::table('rooms')->where('id',$arr_cart_room_id[$i])->first();
                     $d1 = explode('/',$arr_cart_checkin_date[$i]);
                     $d2 = explode('/',$arr_cart_checkout_date[$i]);
                     $d1_new = $d1[2].'-'.$d1[1].'-'.$d1[0];
@@ -65,21 +65,21 @@
                     $total_price = $total_price+($room_data->price*$diff);
                 }
                 @endphp
-                        
-                <h4>Make Payment</h4>
+
+                <h4>Произвести оплату</h4>
                 <select name="payment_method" class="form-control select2" id="paymentMethodChange" autocomplete="off">
-                    <option value="">Select Payment Method</option>
+                    <option value="">Выберите способ оплаты</option>
                     <option value="PayPal">PayPal</option>
                     <option value="Stripe">Stripe</option>
                 </select>
 
                 <div class="paypal mt_20">
-                    <h4>Pay with PayPal</h4>
+                    <h4>Оплатите с помощью PayPal</h4>
                     <div id="paypal-button"></div>
                 </div>
 
                 <div class="stripe mt_20">
-                    <h4>Pay with Stripe</h4>
+                    <h4>Оплатите с помощью Stripe</h4>
                     @php
                     $cents = $total_price*100;
                     $customer_email = Auth::guard('customer')->user()->email;
@@ -104,36 +104,36 @@
             </div>
             <div class="col-lg-4 col-md-4 checkout-right">
                 <div class="inner">
-                    <h4 class="mb_10">Billing Details</h4>
+                    <h4 class="mb_10">Платежные реквизиты</h4>
                     <div>
-                        Name: {{ session()->get('billing_name') }}
+                        Имя: {{ session()->get('billing_name') }}
                     </div>
                     <div>
-                        Email: {{ session()->get('billing_email') }}
+                        Адрес эл.почты: {{ session()->get('billing_email') }}
                     </div>
                     <div>
-                        Phone: {{ session()->get('billing_phone') }}
+                        Телефон: {{ session()->get('billing_phone') }}
                     </div>
                     <div>
-                        Country: {{ session()->get('billing_country') }}
+                        Страна: {{ session()->get('billing_country') }}
                     </div>
                     <div>
-                        Address: {{ session()->get('billing_address') }}
+                        Адрес: {{ session()->get('billing_address') }}
                     </div>
                     <div>
-                        State: {{ session()->get('billing_state') }}
+                        Республика: {{ session()->get('billing_state') }}
                     </div>
                     <div>
-                        City: {{ session()->get('billing_city') }}
+                        Город: {{ session()->get('billing_city') }}
                     </div>
                     <div>
-                        Zip: {{ session()->get('billing_zip') }}
+                        Почтовый индекс: {{ session()->get('billing_zip') }}
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 checkout-right">
                 <div class="inner">
-                    <h4 class="mb_10">Cart Details</h4>
+                    <h4 class="mb_10">Корзина подробнее</h4>
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
@@ -196,17 +196,17 @@
                                                 $t1 = strtotime($d1_new);
                                                 $t2 = strtotime($d2_new);
                                                 $diff = ($t2-$t1)/60/60/24;
-                                                echo '$'.$room_data->price*$diff;
+                                                echo '₽'.$room_data->price*$diff;
                                             @endphp
                                         </td>
                                     </tr>
                                     @php
                                     $total_price = $total_price+($room_data->price*$diff);
                                 }
-                                @endphp                                
+                                @endphp
                                 <tr>
-                                    <td><b>Total:</b></td>
-                                    <td class="p_price"><b>${{ $total_price }}</b></td>
+                                    <td><b>Всего:</b></td>
+                                    <td class="p_price"><b>₽{{ $total_price }}</b></td>
                                 </tr>
                             </tbody>
                         </table>

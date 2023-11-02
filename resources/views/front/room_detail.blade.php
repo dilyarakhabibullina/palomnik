@@ -103,7 +103,6 @@
                     <div class="widget">
                         <h2>Забронируйте этот номер</h2>
                         <form action="{{ route('cart_submit') }}" method="post">
-                       
                             @csrf
                             <input type="hidden" name="room_id" value="{{ $single_room_data->id }}">
                             <div class="form-group mb_20">

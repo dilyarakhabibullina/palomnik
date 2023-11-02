@@ -26,15 +26,12 @@ use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerHomeController;
 use App\Http\Controllers\Customer\CustomerProfileController;
-
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
-
 use App\Http\Controllers\Front\BookController;
 use App\Http\Controllers\Front\BookingController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\FaqController;
-
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
 use App\Http\Controllers\Front\PrayorderController;
@@ -70,6 +67,8 @@ Route::get('/cart', [BookingController::class, 'cart_view'])->name('cart');
 Route::get('/cart/delete/{id}', [BookingController::class, 'cart_delete'])->name('cart_delete');
 Route::get('/checkout', [BookingController::class, 'checkout'])->name('checkout');
 Route::post('/payment', [BookingController::class, 'payment'])->name('payment');
+Route::get('/payment/paypal/{price}', [BookingController::class, 'paypal'])->name('paypal');
+Route::post('/payment/stripe/{price}', [BookingController::class, 'stripe'])->name('stripe');
 
 Route::post('/booking/booksubmit', [BookingController::class, 'cartbook_submit'])->name('cartbook_submit');
 Route::get('/cartbook/delete/{id}', [BookingController::class, 'cartbook_delete'])->name('cartbook_delete');
@@ -89,7 +88,6 @@ Route::get('/book/{id}', [BookController::class, 'single_book'])->name('book_det
 /* Front для отзывов */
 Route::post('/review-store',[BookController::class, 'reviewstore'])->name('review.store');
 /* окончание Front для отзывов */
-
 
 
 /* Customer */
@@ -230,9 +228,8 @@ Route::get('/admin/subscriber/show', [AdminSubscriberController::class, 'show'])
 Route::get('/admin/subscriber/send-email', [AdminSubscriberController::class, 'send_email'])->name('admin_subscriber_send_email');
 Route::post('/admin/subscriber/send-email-submit', [AdminSubscriberController::class, 'send_email_submit'])->name('admin_subscriber_send_email_submit');
 Route::get('/admin/subscriber/showConfirmed', [AdminSubscriberController::class, 'showConfirmed'])->name('admin_subscriber_showConfirmed');
-Route::post('/admin/subscribers/show', [AdminSubscriberController::class, 'update'])->name('update');
+Route::post('/admin/subscribers/show', [AdminSubscriberController::class, 'update'])->name('update')->middleware('admin:admin');
 Route::post('/admin/subscriber/showConfirmed', [AdminSubscriberController::class, 'updateConfirmed'])->name('updateConfirmed');
-
 
 Route::get('/admin/amenity/view', [AdminAmenityController::class, 'index'])->name('admin_amenity_view');
 Route::get('/admin/amenity/add', [AdminAmenityController::class, 'add'])->name('admin_amenity_add');
@@ -254,39 +251,39 @@ Route::get('/admin/room/gallery/delete/{id}', [AdminRoomController::class, 'gall
 
     /* Admin для треб */
 
-    Route::get('/admin/prayorder/view', [AdminPrayorderController::class, 'index'])->name('admin_prayorder_view')->middleware('admin:admin');
-    Route::get('/admin/prayorder/add', [AdminPrayorderController::class, 'add'])->name('admin_prayorder_add')->middleware('admin:admin');
-    Route::post('/admin/prayorder/store', [AdminPrayorderController::class, 'store'])->name('admin_prayorder_store')->middleware('admin:admin');
-    Route::get('/admin/prayorder/edit/{id}', [AdminPrayorderController::class, 'edit'])->name('admin_prayorder_edit')->middleware('admin:admin');
-    Route::post('/admin/prayorder/update/{id}', [AdminPrayorderController::class, 'update'])->name('admin_prayorder_update')->middleware('admin:admin');
-    Route::get('/admin/prayorder/delete/{id}', [AdminPrayorderController::class, 'delete'])->name('admin_prayorder_delete')->middleware('admin:admin');
-    Route::post('/admin/prayorder/view', [AdminPrayorderController::class, 'sendmail'])->name('admin_prayorder_sendmail')->middleware('admin:admin');;
+    Route::get('/admin/prayorder/view', [AdminPrayorderController::class, 'index'])->name('admin_prayorder_view');
+    Route::get('/admin/prayorder/add', [AdminPrayorderController::class, 'add'])->name('admin_prayorder_add');
+    Route::post('/admin/prayorder/store', [AdminPrayorderController::class, 'store'])->name('admin_prayorder_store');
+    Route::get('/admin/prayorder/edit/{id}', [AdminPrayorderController::class, 'edit'])->name('admin_prayorder_edit');
+    Route::post('/admin/prayorder/update/{id}', [AdminPrayorderController::class, 'update'])->name('admin_prayorder_update');
+    Route::get('/admin/prayorder/delete/{id}', [AdminPrayorderController::class, 'delete'])->name('admin_prayorder_delete');
+    Route::post('/admin/prayorder/view', [AdminPrayorderController::class, 'sendmail'])->name('admin_prayorder_sendmail');
 
 
-    Route::get('/admin/treb/view', [AdminTrebController::class, 'index'])->name('admin_treb_view')->middleware('admin:admin');
-    Route::get('/admin/treb/add', [AdminTrebController::class, 'add'])->name('admin_treb_add')->middleware('admin:admin');
-    Route::post('/admin/treb/store', [AdminTrebController::class, 'store'])->name('admin_treb_store')->middleware('admin:admin');
-    Route::get('/admin/treb/edit/{id}', [AdminTrebController::class, 'edit'])->name('admin_treb_edit')->middleware('admin:admin');
-    Route::post('/admin/treb/update/{id}', [AdminTrebController::class, 'update'])->name('admin_treb_update')->middleware('admin:admin');
-    Route::get('/admin/treb/delete/{id}', [AdminTrebController::class, 'delete'])->name('admin_treb_delete')->middleware('admin:admin');
+    Route::get('/admin/treb/view', [AdminTrebController::class, 'index'])->name('admin_treb_view');
+    Route::get('/admin/treb/add', [AdminTrebController::class, 'add'])->name('admin_treb_add');
+    Route::post('/admin/treb/store', [AdminTrebController::class, 'store'])->name('admin_treb_store');
+    Route::get('/admin/treb/edit/{id}', [AdminTrebController::class, 'edit'])->name('admin_treb_edit');
+    Route::post('/admin/treb/update/{id}', [AdminTrebController::class, 'update'])->name('admin_treb_update');
+    Route::get('/admin/treb/delete/{id}', [AdminTrebController::class, 'delete'])->name('admin_treb_delete');
 
-    Route::get('/admin/church/view', [AdminChurchController::class, 'index'])->name('admin_church_view')->middleware('admin:admin');
-    Route::get('/admin/church/add', [AdminChurchController::class, 'add'])->name('admin_church_add')->middleware('admin:admin');
-    Route::post('/admin/church/store', [AdminChurchController::class, 'store'])->name('admin_church_store')->middleware('admin:admin');
-    Route::get('/admin/church/edit/{id}', [AdminChurchController::class, 'edit'])->name('admin_church_edit')->middleware('admin:admin');
-    Route::post('/admin/church/update/{id}', [AdminChurchController::class, 'update'])->name('admin_church_update')->middleware('admin:admin');
-    Route::get('/admin/church/delete/{id}', [AdminChurchController::class, 'delete'])->name('admin_church_delete')->middleware('admin:admin');
+    Route::get('/admin/church/view', [AdminChurchController::class, 'index'])->name('admin_church_view');
+    Route::get('/admin/church/add', [AdminChurchController::class, 'add'])->name('admin_church_add');
+    Route::post('/admin/church/store', [AdminChurchController::class, 'store'])->name('admin_church_store');
+    Route::get('/admin/church/edit/{id}', [AdminChurchController::class, 'edit'])->name('admin_church_edit');
+    Route::post('/admin/church/update/{id}', [AdminChurchController::class, 'update'])->name('admin_church_update');
+    Route::get('/admin/church/delete/{id}', [AdminChurchController::class, 'delete'])->name('admin_church_delete');
 
 
     /* окончание Admin для треб */
 
     /* Admin для мусульманских молитв  */
-    Route::get('/admin/prayordermuslim/view', [AdminPrayorderMuslimController::class, 'index'])->name('admin_prayordermuslim_view')->middleware('admin:admin');
-    Route::get('/admin/prayordermuslim/add', [AdminPrayorderMuslimController::class, 'add'])->name('admin_prayordermuslim_add')->middleware('admin:admin');
-    Route::post('/admin/prayordermuslim/store', [AdminPrayorderMuslimController::class, 'store'])->name('admin_prayordermuslim_store')->middleware('admin:admin');
-    Route::get('/admin/prayordermuslim/edit/{id}', [AdminPrayorderMuslimController::class, 'edit'])->name('admin_prayordermuslim_edit')->middleware('admin:admin');
-    Route::post('/admin/prayordermuslim/update/{id}', [AdminPrayorderMuslimController::class, 'update'])->name('admin_prayordermuslim_update')->middleware('admin:admin');
-    Route::get('/admin/prayordermuslim/delete/{id}', [AdminPrayorderMuslimController::class, 'delete'])->name('admin_prayordermuslim_delete')->middleware('admin:admin');
+    Route::get('/admin/prayordermuslim/view', [AdminPrayorderMuslimController::class, 'index'])->name('admin_prayordermuslim_view');
+    Route::get('/admin/prayordermuslim/add', [AdminPrayorderMuslimController::class, 'add'])->name('admin_prayordermuslim_add');
+    Route::post('/admin/prayordermuslim/store', [AdminPrayorderMuslimController::class, 'store'])->name('admin_prayordermuslim_store');
+    Route::get('/admin/prayordermuslim/edit/{id}', [AdminPrayorderMuslimController::class, 'edit'])->name('admin_prayordermuslim_edit');
+    Route::post('/admin/prayordermuslim/update/{id}', [AdminPrayorderMuslimController::class, 'update'])->name('admin_prayordermuslim_update');
+    Route::get('/admin/prayordermuslim/delete/{id}', [AdminPrayorderMuslimController::class, 'delete'])->name('admin_prayordermuslim_delete');
 
 
     Route::get('/admin/muslimpray/view', [AdminMuslimprayController::class, 'index'])->name('admin_muslimpray_view')->middleware('admin:admin');

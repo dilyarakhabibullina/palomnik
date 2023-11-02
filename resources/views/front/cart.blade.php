@@ -210,7 +210,7 @@
                         Всего к оплате:  ₽{{ $total_roomprice + $total_bookprice}}
 
                 <div class="checkout mb_20">
-                    <a href="" class="btn btn-primary bg-website">Оформить заказ</a>
+                    <a href="{{ route('checkout') }}" class="btn btn-primary bg-website">Оформить заказ</a>
                 </div>
                 @endif
 

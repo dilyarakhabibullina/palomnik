@@ -89,6 +89,7 @@
 
     <div class="home-rooms">
         <div class="container">
+
             <div class="row">
                 @foreach($room_all as $item)
 

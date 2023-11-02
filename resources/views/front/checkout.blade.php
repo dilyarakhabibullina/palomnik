@@ -113,47 +113,49 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
+                            @if(session()->has('cart_room_id'))
 
                                 @php
-                                $arr_cart_room_id = array();
-                                $i=0;
-                                foreach(session()->get('cart_room_id') as $value) {
-                                    $arr_cart_room_id[$i] = $value;
-                                    $i++;
-                                }
+                                    $total_roomprice =0;
+                                   $arr_cart_room_id = array();
+                                   $i=0;
+                                   foreach(session()->get('cart_room_id') as $value) {
+                                       $arr_cart_room_id[$i] = $value;
+                                       $i++;
+                                   }
 
-                                $arr_cart_checkin_date = array();
-                                $i=0;
-                                foreach(session()->get('cart_checkin_date') as $value) {
-                                    $arr_cart_checkin_date[$i] = $value;
-                                    $i++;
-                                }
+                                   $arr_cart_checkin_date = array();
+                                   $i=0;
+                                   foreach(session()->get('cart_checkin_date') as $value) {
+                                       $arr_cart_checkin_date[$i] = $value;
+                                       $i++;
+                                   }
 
-                                $arr_cart_checkout_date = array();
-                                $i=0;
-                                foreach(session()->get('cart_checkout_date') as $value) {
-                                    $arr_cart_checkout_date[$i] = $value;
-                                    $i++;
-                                }
+                                   $arr_cart_checkout_date = array();
+                                   $i=0;
+                                   foreach(session()->get('cart_checkout_date') as $value) {
+                                       $arr_cart_checkout_date[$i] = $value;
+                                       $i++;
+                                   }
 
-                                $arr_cart_adult = array();
-                                $i=0;
-                                foreach(session()->get('cart_adult') as $value) {
-                                    $arr_cart_adult[$i] = $value;
-                                    $i++;
-                                }
+                                   $arr_cart_adult = array();
+                                   $i=0;
+                                   foreach(session()->get('cart_adult') as $value) {
+                                       $arr_cart_adult[$i] = $value;
+                                       $i++;
+                                   }
 
-                                $arr_cart_children = array();
-                                $i=0;
-                                foreach(session()->get('cart_children') as $value) {
-                                    $arr_cart_children[$i] = $value;
-                                    $i++;
-                                }
+                                   $arr_cart_children = array();
+                                   $i=0;
+                                   foreach(session()->get('cart_children') as $value) {
+                                       $arr_cart_children[$i] = $value;
+                                       $i++;
+                                   }
 
-                                $total_price = 0;
-                                for($i=0;$i<count($arr_cart_room_id);$i++)
-                                {
-                                    $room_data = DB::table('rooms')->where('id',$arr_cart_room_id[$i])->first();
+                                   $total_price = 0;
+                                   for($i=0;$i<count($arr_cart_room_id);$i++)
+                                   {
+                                       $room_data = DB::table('rooms')->where('id',$arr_cart_room_id[$i])->first();
                                     @endphp
 
                                     <tr>
@@ -178,14 +180,69 @@
                                         </td>
                                     </tr>
                                     @php
-                                    $total_price = $total_price+($room_data->price*$diff);
+                                    $total_roomprice = $total_roomprice+($room_data->price*$diff);
                                 }
                                 @endphp
+
+                            @endif
+
+                            @if(session()->has('cart_book_id'))
+
+                                @php
+                                    $total_bookprice =0;
+                                       $arr_cart_book_id = array();
+                                       $i=0;
+                                       foreach(session()->get('cart_book_id') as $value) {
+                                           $arr_cart_book_id[$i] = $value;
+                                           $i++;
+                                       }
+                                       $total_price = 0;
+                                       for($i=0;$i<count($arr_cart_book_id);$i++)
+                                       {
+                                           $book_data = DB::table('books')->where('id',$arr_cart_book_id[$i])->first();
+                                @endphp
+
+                                <tr>
+                                    <td>
+                                        {{ $book_data->title }}
+                                        <br>
+
+                                        <br>
+
+                                    </td>
+                                    <td class="p_price">
+                                        @php
+
+                                            echo '₽'.$book_data->price;
+                                        @endphp
+                                    </td>
+                                </tr>
+                                @php
+                                    $total_bookprice = $total_bookprice+($book_data->price);
+                                }
+                                @endphp
+
+                            @endif
+
+                            @if(session()->has('cart_book_id') or session()->has('cart_room_id'))
+                                @php
+                                    if(!isset( $total_roomprice)){
+                                          $total_roomprice =0;
+                                     }
+                                      if(!isset( $total_bookprice)){
+                                          $total_bookprice =0;
+                                     }
+                                @endphp
+
+
+
+                            @endif
                                 <tr>
                                     <td><b>Всего:</b></td>
-                                    <td class="p_price"><b>₽{{ $total_price }}</b></td>
+                                    <td class="p_price"><b>₽{{ $total_roomprice + $total_bookprice}}</b></td>
                                 </tr>
                             </tbody>
+
                         </table>
                     </div>
                 </div>

@@ -40,8 +40,9 @@
             <div class="col-md-6 right-side">
                 <ul class="right">
                     @if($global_page_data->cart_status == 1)
-                    <li class="menu"><a href="{{ route('cart') }}">{{ $global_page_data->cart_heading }}@if(session()->has('cart_room_id') and !session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_room_id')) }}</sup>@endif @if(session()->has('cart_book_id') and !session()->has('cart_room_id'))<sup>{{ count(session()->get('cart_book_id')) }}</sup>@endif @if(session()->has('cart_room_id') and session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_room_id')) + count(session()->get('cart_book_id')) }}</sup>@endif</a></li>
+                        <li class="menu"><a href="{{ route('cart') }}">{{ $global_page_data->cart_heading }}@if(session()->has('cart_room_id') and !session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_room_id')) }}</sup>@endif @if(session()->has('cart_book_id') and !session()->has('cart_room_id'))<sup>{{ count(session()->get('cart_book_id')) }}</sup>@endif @if(session()->has('cart_room_id') and session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_room_id')) + count(session()->get('cart_book_id')) }}</sup>@endif</a></li>
                     @endif
+
                     @if($global_page_data->checkout_status == 1)
                     <li class="menu"><a href="checkout.html">{{ $global_page_data->checkout_heading }}</a></li>
                     @endif
@@ -83,7 +84,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="{{route('home')}}">
-                    <img src="uploads/logo1.png" alt="">
+                    <img src="uploads/logo.png" alt="">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
@@ -289,6 +290,7 @@
 <div class="scroll-top">
     <i class="fa fa-angle-up"></i>
 </div>
+
 
 @include('front.layout.scripts_footer')
 
