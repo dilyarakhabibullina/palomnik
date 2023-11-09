@@ -9,9 +9,13 @@ use Auth;
 
 class CustomerHomeController extends Controller
 {
-    public function index()
-    {
 
-        return view('customer.home');
+
+        public function index()
+    {
+        $total_completed_orders = Order::where('status','Completed')->where('customer_id',Auth::guard('customer')->user()->id)->count();
+        $total_pending_orders = Order::where('status','Pending')->where('customer_id',Auth::guard('customer')->user()->id)->count();
+        return view('customer.home', compact('total_completed_orders','total_pending_orders'));
     }
+
 }

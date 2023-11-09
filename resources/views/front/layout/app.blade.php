@@ -40,7 +40,20 @@
             <div class="col-md-6 right-side">
                 <ul class="right">
                     @if($global_page_data->cart_status == 1)
-                        <li class="menu"><a href="{{ route('cart') }}">{{ $global_page_data->cart_heading }}@if(session()->has('cart_room_id') and !session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_room_id')) }}</sup>@endif @if(session()->has('cart_book_id') and !session()->has('cart_room_id'))<sup>{{ count(session()->get('cart_book_id')) }}</sup>@endif @if(session()->has('cart_room_id') and session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_room_id')) + count(session()->get('cart_book_id')) }}</sup>@endif</a></li>
+                        <li class="menu"><a href="{{ route('cart') }}">{{ $global_page_data->cart_heading }}
+                                @if(session()->has('cart_room_id') and !session()->has('cart_book_id') and !session()->has('cart_excursion_id'))<sup>{{ count(session()->get('cart_room_id')) }}</sup>@endif
+                                @if(session()->has('cart_book_id') and !session()->has('cart_room_id') and !session()->has('cart_excursion_id'))<sup>{{ count(session()->get('cart_book_id')) }}</sup>@endif
+                                @if(session()->has('cart_excursion_id') and !session()->has('cart_room_id') and !session()->has('cart_book_id'))<sup>{{ count(session()->get('cart_excursion_id')) }}</sup>@endif
+
+                                @if(session()->has('cart_room_id') and session()->has('cart_book_id') and !session()->has('cart_excursion_id'))<sup>{{ count(session()->get('cart_room_id')) + count(session()->get('cart_book_id'))}}</sup>@endif
+                                @if(session()->has('cart_room_id') and !session()->has('cart_book_id') and session()->has('cart_excursion_id'))<sup>{{ count(session()->get('cart_room_id')) + count(session()->get('cart_excursion_id'))}}</sup>@endif
+
+                                @if(session()->has('cart_book_id') and !session()->has('cart_room_id') and session()->has('cart_excursion_id'))<sup>{{ count(session()->get('cart_book_id')) + count(session()->get('cart_excursion_id'))}}</sup>@endif
+
+                            @if(session()->has('cart_room_id') and session()->has('cart_book_id') and session()->has('cart_excursion_id'))<sup>{{ count(session()->get('cart_room_id')) + count(session()->get('cart_book_id')) + count(session()->get('cart_excursion_id'))}}</sup>@endif
+                        </a></li>
+
+
                     @endif
 
                     @if($global_page_data->checkout_status == 1)
@@ -92,7 +105,7 @@
                             <a href="{{route('home')}}" class="nav-link">Главная страница</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Экскурсии</a>
+                            <a href="{{route('index-excursion')}}" class="nav-link">Экскурсии</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('index-book')}}" class="nav-link">Литература</a>
@@ -112,10 +125,10 @@
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Календарь</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Мусульманских праздников</a>
+                                    <a href="{{ route('calendarmuslim.index') }}" class="nav-link">Мусульманских религиозных дат</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">Православных праздников</a>
+                                    <a href="{{ route('calendarchrist.index') }}" class="nav-link">Христианских религиозных дат</a>
                                 </li>
                             </ul>
                         </li>
@@ -183,7 +196,8 @@
                 <div class="item">
                     <h2 class="heading">Ссылки сайта</h2>
                     <ul class="useful-links">
-                        <li><a href="rooms.html">Размещение</a></li>
+                        <li><a href="{{route('index-excursion')}}" >Экскурсии</a></li>
+                        <li><a href="{{route('index-book')}}" >Литература</a></li>
                         @if($global_page_data->photo_gallery_status == 1)
                             <li><a href="{{ route('photo_gallery') }}">{{ $global_page_data->photo_gallery_heading }}</a></li>
                         @endif
@@ -240,7 +254,7 @@
                             <i class="fa fa-volume-control-phone"></i>
                         </div>
                         <div class="right">
-                            religious_tourism@mail.ru
+                            843-222-3333
                         </div>
                     </div>
                     <div class="list-item">
@@ -248,16 +262,10 @@
                             <i class="fa fa-envelope-o"></i>
                         </div>
                         <div class="right">
-                            843-222-3333
+                            religious_tourism@mail.ru
                         </div>
                     </div>
-                    <ul class="social">
-                        <li><a href=""><i class="fa fa-facebook-f"></i></a></li>
-                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                        <li><a href=""><i class="fa fa-pinterest-p"></i></a></li>
-                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                    </ul>
+
                 </div>
             </div>
 

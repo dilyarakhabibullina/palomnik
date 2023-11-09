@@ -224,13 +224,144 @@
 
                             @endif
 
-                            @if(session()->has('cart_book_id') or session()->has('cart_room_id'))
+                            @if(session()->has('cart_excursion_id'))
+
+
+
+
+
+
+                                        @php
+                                            $arr_cart_excursion_id = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_excursion_id') as $value) {
+                                                $arr_cart_excursion_id[$i] = $value;
+                                                $i++;
+                                            }
+
+                                      /*     $arr_cart_checkin_date = array();
+                                           $i=0;
+                                            foreach(session()->get('cart_checkin_date') as $value) {
+                                                $arr_cart_checkin_date[$i] = $value;
+                                               $i++;
+                                           }
+                                      */
+                                      /*
+                                            $arr_cart_checkout_date = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_checkout_date') as $value) {
+                                                $arr_cart_checkout_date[$i] = $value;
+                                                $i++;
+                                            }
+                                        */
+                                            $arr_cart_adult_excur = array();
+
+                                            $i=0;
+                                            foreach(session()->get('cart_adult_excur') as $value) {
+                                                $arr_cart_adult_excur[$i] = $value;
+                                                $i++;
+                                            }
+
+                                            $arr_cart_children_excur = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_children_excur') as $value) {
+                                                $arr_cart_children_excur[$i] = $value;
+                                                $i++;
+                                            }
+
+                                            $arr_cart_pensioner = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_pensioner') as $value) {
+                                                $arr_cart_pensioner[$i] = $value;
+                                                $i++;
+                                            }
+
+                                            $arr_cart_kids = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_kids') as $value) {
+                                                $arr_cart_kids[$i] = $value;
+                                                $i++;
+                                            }
+
+                                            $arr_cart_date = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_date') as $value) {
+                                                $arr_cart_date[$i] = $value;
+                                                $i++;
+                                            }
+
+                                            $arr_cart_time_excur = array();
+                                            $i=0;
+                                            foreach(session()->get('cart_time_excur') as $value) {
+                                                $arr_cart_time_excur[$i] = $value;
+                                                $i++;
+                                            }
+
+
+                                            $total_excursionprice = 0;
+                                            for($i=0;$i<count($arr_cart_excursion_id);$i++)
+                                            {
+                                                $discounts = App\Models\Discount::get();
+                                                $excursion_data = App\Models\Excursion::with('discounts')->where('id',$arr_cart_excursion_id[$i])->first();
+
+                                        @endphp
+                                        <tr>
+                                            <td>
+                                                {{ $excursion_data->name }}
+                                                <br>
+                                                Дата: {{ $arr_cart_date[$i] }}
+                                                <br>
+                                                Период: {{ $arr_cart_time_excur[$i] }} - {{ sum8_time($arr_cart_time_excur[$i],$excursion_data->durationExcursion)}}
+                                                <br>
+                                                Взрослые: {{ $arr_cart_adult_excur[$i] }},
+                                                <br>
+                                                Пенсионеры: {{ $arr_cart_pensioner[$i] }},
+                                                <br>
+                                                Дети от 5 до 14 лет: {{ $arr_cart_children_excur[$i]}},
+                                                <br>
+                                                Дети до 5 лет: {{ $arr_cart_kids[$i]}},
+                                                <br>
+                                            </td>
+                                            <td class="p_price">
+                                                @php
+                                                    foreach ($excursion_data->discounts as $discount){
+
+                                                    $adult =  $excursion_data->price - ($excursion_data->price * $discounts[0]->discount)/100  ;
+                                                    $pensioner= $excursion_data->price - ($excursion_data->price * $discounts[2]->discount)/100  ;
+                                                    $children = $excursion_data->price - ($excursion_data->price * $discounts[1]->discount)/100  ;
+                                                    $kids = $excursion_data->price - ($excursion_data->price * $discounts[3]->discount)/100  ;
+                                                      }
+
+                                                 $adult *  $arr_cart_adult_excur[$i]  = $sum_adult = $adult * $arr_cart_adult_excur[$i];
+                                                $pensioner * $arr_cart_pensioner[$i]  = $sum_pensioner =$pensioner * $arr_cart_pensioner[$i];
+                                                $children *  $arr_cart_children_excur[$i]  = $sum_children = $children *  $arr_cart_children_excur[$i];
+                                                $kids *  $arr_cart_kids[$i]  = $sum_kids = $kids *  $arr_cart_kids[$i];
+
+                                                @endphp
+                                           ₽{{ $sum_adult + $sum_pensioner + $sum_children + $sum_kids }}
+                                            </td>
+                                        </tr>
+
+                                        @php
+                                            $total_excursionprice = $total_excursionprice + ($sum_adult + $sum_pensioner + $sum_children + $sum_kids);
+                                        }
+                                        @endphp
+
+                                        </tbody>
+
+
+                            @endif
+
+                            @if(session()->has('cart_book_id') or session()->has('cart_room_id') or session()->has('cart_excursion_id'))
                                 @php
                                     if(!isset( $total_roomprice)){
                                           $total_roomprice =0;
                                      }
                                       if(!isset( $total_bookprice)){
                                           $total_bookprice =0;
+                                     }
+                                      if(!isset( $total_excursionprice)){
+                                           $total_excursionprice =0;
                                      }
                                 @endphp
 
@@ -239,7 +370,7 @@
                             @endif
                                 <tr>
                                     <td><b>Всего:</b></td>
-                                    <td class="p_price"><b>₽{{ $total_roomprice + $total_bookprice}}</b></td>
+                                    <td class="p_price"><b>₽{{ $total_roomprice + $total_bookprice + $total_excursionprice}}</b></td>
                                 </tr>
                             </tbody>
 
@@ -251,3 +382,17 @@
     </div>
 </div>
 @endsection
+@php
+    function sum8_time()
+{
+$i = 0;
+foreach (func_get_args() as $time) {
+sscanf($time, '%d:%d', $hour, $min);
+$i += $hour * 60 + $min;
+}
+if ($h = floor($i / 60)) {
+$i %= 60;
+}
+return sprintf('%02d:%02d', $h, $i);
+}
+@endphp

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Book;
 use App\Models\Room;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
@@ -30,8 +31,10 @@ class AppServiceProvider extends ServiceProvider
 
         $page_data = Page::where('id',1)->first();
         $room_data = Room::get();
+        $book_data = Book::get();
 
         view()->share('global_page_data', $page_data);
         view()->share('global_room_data', $room_data);
+        view()->share('global_book_data', $book_data);
     }
 }

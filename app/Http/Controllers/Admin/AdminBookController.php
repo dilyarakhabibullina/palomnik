@@ -54,7 +54,6 @@ class AdminBookController extends Controller
         $obj->price = $request->price;
         $obj->pages = $request->pages;
         $obj->published = $request->published;
-        $obj->user_id = 1;
         $obj->slug = 'slug';
         $obj->save();
 

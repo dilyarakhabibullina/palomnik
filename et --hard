@@ -1,0 +1,143 @@
+[33mcommit 3e0d031e99446f6b63d43e3bd146760eec8f2c07[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Wed Nov 8 23:14:49 2023 +0300
+
+    исправила файл гитигнор
+
+[33mcommit 95097a5efc455a0ea33a98feb8357e7a0d376941[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Wed Nov 8 00:22:37 2023 +0300
+
+    Добавлены экскурсии и календари
+
+[33mcommit 28e01ebf6e2d8a4359c7b3651ac04b133d2e1b82[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Fri Nov 3 00:30:54 2023 +0300
+
+    добавлено оформление заказа +выбор оплаты
+
+[33mcommit 58392f69d46aba3fc675c3c11389728d5b8f693c[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Tue Oct 31 22:15:59 2023 +0300
+
+    добавлена религиозная литература и корзина
+
+[33mcommit eb9f959af81015b26086f8af6b4d586106d4a55c[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Tue Oct 24 00:50:59 2023 +0300
+
+    rooms, prays and other
+
+[33mcommit 18d18c33d5e483606a5520ef3dfb6ba47031e15f[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Fri Oct 20 22:36:10 2023 +0300
+
+    страница контакты фронт
+
+[33mcommit 70de99246fb17c800786769538d8cdbae6d23217[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Mon Oct 16 23:24:14 2023 +0300
+
+    сделаны страницы условия и правила
+
+[33mcommit 7ce574177ccfc7ad05b4b2bf9e26c76eed4567d2[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sun Oct 15 20:47:41 2023 +0300
+
+    добавлены faq
+
+[33mcommit 5df276b3beefb09b1bb1c1e97476234d87e33d08[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sat Oct 14 12:42:13 2023 +0300
+
+    реализованы фото- и видеогалерея
+
+[33mcommit b680d64725921588e2c38403be73783947ab28f6[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Tue Oct 10 23:13:11 2023 +0300
+
+    добавлен контент через админку
+
+[33mcommit bc2b7e1f70c2683ba3e68c2ba1475a92f4e6f317[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Tue Oct 10 00:24:38 2023 +0300
+
+    сделан фронт для постов и отзывов,добавлен контент
+
+[33mcommit bf67540ebf4fc1e7623d44475277a4f70d1c34b3[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sat Oct 7 20:22:53 2023 +0300
+
+    добавлены features
+
+[33mcommit 49eea5e75e422fbd2ed548f1451114a8d5c9922c[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Wed Oct 4 23:31:54 2023 +0300
+
+    причесала главную страницу и uploads
+
+[33mcommit 3dd7c11568f119fbc0d2aace3af480fb4baf1f9c[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Wed Oct 4 00:23:41 2023 +0300
+
+    поправила плейсхолдер в админке
+
+[33mcommit cd1ae62e5817907aa4bcaf4f4e853eae0a853f79[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Wed Oct 4 00:21:49 2023 +0300
+
+    внесла оговоренные изменения на  гл стр и админку
+
+[33mcommit c1e2661bc6284be6b577db97afebd23b07c28955[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Tue Oct 3 21:10:12 2023 +0300
+
+    шаблон home отредактирован
+
+[33mcommit 0d4a4016d538fbe2f81f46430e8f25b794556c6e[m
+Merge: 0d5721a 7339b96
+Author: dilyarakhabibullina <47914249+dilyarakhabibullina@users.noreply.github.com>
+Date:   Tue Oct 3 20:53:33 2023 +0300
+
+    Merge pull request #2 from dilyarakhabibullina/dilyara2
+    
+    Dilyara2
+
+[33mcommit 0d5721a303a477e78652482cfb507cdd7e2e6422[m
+Merge: 3956bbd f670323
+Author: dilyarakhabibullina <47914249+dilyarakhabibullina@users.noreply.github.com>
+Date:   Tue Oct 3 20:52:17 2023 +0300
+
+    Merge pull request #1 from dilyarakhabibullina/dilyara1
+    
+    сделана главная страница, добавлен логотип проекта
+
+[33mcommit 7339b96ad665a55b028be235283ff45dbe75ce5c[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Tue Oct 3 20:49:13 2023 +0300
+
+    создан контроллер PrayOrder и роут к нему
+
+[33mcommit ca3fbc1affe28217b555430b854d3f836e42dfa0[m[33m ([m[1;32mdilyara1[m[33m)[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sun Oct 1 23:59:46 2023 +0300
+
+    видоизменен шпаблон главной страницы
+
+[33mcommit f67032390103eb2dbc9b67ad9a1ea644d7c3ae56[m[33m ([m[1;31morigin/dilyara1[m[33m)[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sun Oct 1 00:00:59 2023 +0300
+
+    сделана главная страница, добавлен логотип проекта
+
+[33mcommit 3956bbd2c498a34eee9c28d6436c9dde92d4c96f[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sat Sep 30 21:13:05 2023 +0300
+
+    сделана главная страница
+
+[33mcommit fda3819b3ed0225e2f047fe9c3d02bfd05bdee6f[m
+Author: Dilyara Khabibullina <khdilyara@rambler.ru>
+Date:   Sat Sep 30 01:07:40 2023 +0300
+
+    добавлены картинки в слайдер

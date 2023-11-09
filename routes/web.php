@@ -3,7 +3,12 @@
 use App\Http\Controllers\Admin\AdminAmenityController;
 use App\Http\Controllers\Admin\AdminAuthorController;
 use App\Http\Controllers\Admin\AdminBookController;
+use App\Http\Controllers\Admin\AdminCalendarchristController;
+use App\Http\Controllers\Admin\AdminCalendarmuslimController;
 use App\Http\Controllers\Admin\AdminChurchController;
+use App\Http\Controllers\Admin\AdminDiscountController;
+use App\Http\Controllers\Admin\AdminDurationController;
+use App\Http\Controllers\Admin\AdminExcursionController;
 use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminGenreController;
@@ -12,6 +17,7 @@ use App\Http\Controllers\Admin\AdminMosqueController;
 use App\Http\Controllers\Admin\AdminMuslimprayController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
+use App\Http\Controllers\Admin\AdminPlacevisitController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminPrayorderController;
 use App\Http\Controllers\Admin\AdminPrayorderMuslimController;
@@ -23,14 +29,19 @@ use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminTrebController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\Admin\AdminSubscriberController;
+use App\Http\Controllers\Admin\AdminWhatdayController;
 use App\Http\Controllers\Customer\CustomerAuthController;
 use App\Http\Controllers\Customer\CustomerHomeController;
+use App\Http\Controllers\Customer\CustomerOrderController;
 use App\Http\Controllers\Customer\CustomerProfileController;
 use App\Http\Controllers\Front\AboutController;
 use App\Http\Controllers\Front\BlogController;
 use App\Http\Controllers\Front\BookController;
 use App\Http\Controllers\Front\BookingController;
+use App\Http\Controllers\Front\CalendarchristController;
+use App\Http\Controllers\Front\CalendarmuslimController;
 use App\Http\Controllers\Front\ContactController;
+use App\Http\Controllers\Front\ExcursionController;
 use App\Http\Controllers\Front\FaqController;
 use App\Http\Controllers\Front\HomeController;
 use App\Http\Controllers\Front\PhotoController;
@@ -73,6 +84,9 @@ Route::post('/payment/stripe/{price}', [BookingController::class, 'stripe'])->na
 Route::post('/booking/booksubmit', [BookingController::class, 'cartbook_submit'])->name('cartbook_submit');
 Route::get('/cartbook/delete/{id}', [BookingController::class, 'cartbook_delete'])->name('cartbook_delete');
 
+Route::post('/booking/excursionsubmit', [BookingController::class, 'cartexcur_submit'])->name('cartexcur_submit');
+Route::get('/cartexcursion/delete/{id}', [BookingController::class, 'cartexcur_delete'])->name('cartexcur_delete');
+
 
 Route::get('/prayorder/trebi', [PrayorderController::class, 'indexTrebi'])->name('indexTrebi');
 Route::post('/prayorder/trebi', [PrayorderController::class, 'store'])->name('store');
@@ -88,6 +102,27 @@ Route::get('/book/{id}', [BookController::class, 'single_book'])->name('book_det
 /* Front для отзывов */
 Route::post('/review-store',[BookController::class, 'reviewstore'])->name('review.store');
 /* окончание Front для отзывов */
+
+/* Front для экскурсий */
+Route::get('/excursion', [ExcursionController::class, 'index'])->name('index-excursion');
+Route::get('/excursion/{id}', [ExcursionController::class, 'single_excursion'])->name('excursion_detail');
+Route::post('/reviewexcur-store',[ExcursionController::class, 'reviewexcurstore'])->name('reviewexcur.store');
+/* окончание Front для экскурсий */
+
+
+/* Front для мусульманских религиозных дат*/
+
+Route::get('calendarmuslim/index', [CalendarmuslimController::class, 'index'])->name('calendarmuslim.index');
+Route::post('calendarmuslim', [CalendarmuslimController::class, 'store'])->name('calendarmuslim.store');
+Route::patch('calendarmuslim/update/{id}', [CalendarmuslimController::class, 'update'])->name('calendarmuslim.update');
+Route::delete('calendarmuslim/destroy/{id}', [CalendarmuslimController::class, 'destroy'])->name('calendarmuslim.destroy');
+
+/* Front для христианских религиозных дат*/
+
+Route::get('calendarchrist/index', [CalendarchristController::class, 'index'])->name('calendarchrist.index');
+Route::post('calendarchrist', [CalendarchristController::class, 'store'])->name('calendarchrist.store');
+Route::patch('calendarchrist/update/{id}', [CalendarchristController::class, 'update'])->name('calendarchrist.update');
+Route::delete('calendarchrist/destroy/{id}', [CalendarchristController::class, 'destroy'])->name('calendarchrist.destroy');
 
 
 /* Customer */
@@ -109,8 +144,10 @@ Route::group(['middleware' =>['customer:customer']], function(){
     Route::get('/customer/home', [CustomerHomeController::class, 'index'])->name('customer_home');
     Route::get('/customer/edit-profile', [CustomerProfileController::class, 'index'])->name('customer_profile');
     Route::post('/customer/edit-profile-submit', [CustomerProfileController::class, 'profile_submit'])->name('customer_profile_submit');
-
+    Route::get('/customer/orders/view', [CustomerOrderController::class, 'index'])->name('customer_orders_view');
+    Route::get('/customer/invoice/{id}', [CustomerOrderController::class, 'invoice'])->name('customer_invoice');
 });
+
 
 
 /* Admin */
@@ -347,6 +384,65 @@ Route::get('/admin/room/gallery/delete/{id}', [AdminRoomController::class, 'gall
 
     /* окончание Admin для книг */
 
+
+    /* Admin для экскурсий */
+    Route::get('/admin/excursion/view', [AdminExcursionController::class, 'index'])->name('admin_excursion_view')->middleware('admin:admin');
+    Route::get('/admin/excursion/add', [AdminExcursionController::class, 'add'])->name('admin_excursion_add')->middleware('admin:admin');
+    Route::post('/admin/excursion/store', [AdminExcursionController::class, 'store'])->name('admin_excursion_store')->middleware('admin:admin');
+    Route::get('/admin/excursion/edit/{id}', [AdminExcursionController::class, 'edit'])->name('admin_excursion_edit')->middleware('admin:admin');
+    Route::post('/admin/excursion/update/{id}', [AdminExcursionController::class, 'update'])->name('admin_excursion_update')->middleware('admin:admin');
+    Route::get('/admin/excursion/delete/{id}', [AdminExcursionController::class, 'delete'])->name('admin_excursion_delete')->middleware('admin:admin');
+
+    Route::get('/admin/discount/view', [AdminDiscountController::class, 'index'])->name('admin_discount_view')->middleware('admin:admin');
+    Route::get('/admin/discount/add', [AdminDiscountController::class, 'add'])->name('admin_discount_add')->middleware('admin:admin');
+    Route::post('/admin/discount/store', [AdminDiscountController::class, 'store'])->name('admin_discount_store')->middleware('admin:admin');
+    Route::get('/admin/discount/edit/{id}', [AdminDiscountController::class, 'edit'])->name('admin_discount_edit')->middleware('admin:admin');
+    Route::post('/admin/discount/update/{id}', [AdminDiscountController::class, 'update'])->name('admin_discount_update')->middleware('admin:admin');
+    Route::get('/admin/discount/delete/{id}', [AdminDiscountController::class, 'delete'])->name('admin_discount_delete')->middleware('admin:admin');
+
+    Route::get('/admin/duration/view', [AdminDurationController::class, 'index'])->name('admin_duration_view')->middleware('admin:admin');
+    Route::get('/admin/duration/add', [AdminDurationController::class, 'add'])->name('admin_duration_add')->middleware('admin:admin');
+    Route::post('/admin/duration/store', [AdminDurationController::class, 'store'])->name('admin_duration_store')->middleware('admin:admin');
+    Route::get('/admin/duration/edit/{id}', [AdminDurationController::class, 'edit'])->name('admin_duration_edit')->middleware('admin:admin');
+    Route::post('/admin/duration/update/{id}', [AdminDurationController::class, 'update'])->name('admin_duration_update')->middleware('admin:admin');
+    Route::get('/admin/duration/delete/{id}', [AdminDurationController::class, 'delete'])->name('admin_duration_delete')->middleware('admin:admin');
+
+    Route::get('/admin/whatday/view', [AdminWhatdayController::class, 'index'])->name('admin_whatday_view')->middleware('admin:admin');
+    Route::get('/admin/whatday/add', [AdminWhatdayController::class, 'add'])->name('admin_whatday_add')->middleware('admin:admin');
+    Route::post('/admin/whatday/store', [AdminWhatdayController::class, 'store'])->name('admin_whatday_store')->middleware('admin:admin');
+    Route::get('/admin/whatday/edit/{id}', [AdminWhatdayController::class, 'edit'])->name('admin_whatday_edit')->middleware('admin:admin');
+    Route::post('/admin/whatday/update/{id}', [AdminWhatdayController::class, 'update'])->name('admin_whatday_update')->middleware('admin:admin');
+    Route::get('/admin/whatday/delete/{id}', [AdminWhatdayController::class, 'delete'])->name('admin_whatday_delete')->middleware('admin:admin');
+
+    Route::get('/admin/placevisit/view', [AdminPlacevisitController::class, 'index'])->name('admin_placevisit_view')->middleware('admin:admin');
+    Route::get('/admin/placevisit/add', [AdminPlacevisitController::class, 'add'])->name('admin_placevisit_add')->middleware('admin:admin');
+    Route::post('/admin/placevisit/store', [AdminPlacevisitController::class, 'store'])->name('admin_placevisit_store')->middleware('admin:admin');
+    Route::get('/admin/placevisit/edit/{id}', [AdminPlacevisitController::class, 'edit'])->name('admin_placevisit_edit')->middleware('admin:admin');
+    Route::post('/admin/placevisit/update/{id}', [AdminPlacevisitController::class, 'update'])->name('admin_placevisit_update')->middleware('admin:admin');
+    Route::get('/admin/placevisit/delete/{id}', [AdminPlacevisitController::class, 'delete'])->name('admin_placevisit_delete')->middleware('admin:admin');
+
+    /* окончание Admin для экскурсий  */
+
+    /* начало Admin для мусульманского календаря */
+    Route::get('/admin/calendarmuslim/view', [AdminCalendarmuslimController::class, 'index'])->name('admin.calendarmuslim.view');
+    Route::get('/admin/calendarmuslim/add', [AdminCalendarmuslimController::class, 'add'])->name('admin.calendarmuslim.add');
+    Route::post('/admin/calendarmuslim/store', [AdminCalendarmuslimController::class, 'store'])->name('admin.calendarmuslim.store');
+    Route::get('/admin/calendarmuslim/edit/{id}', [AdminCalendarmuslimController::class, 'edit'])->name('admin.calendarmuslim.edit');
+    Route::post('/admin/calendarmuslim/update/{id}', [AdminCalendarmuslimController::class, 'update'])->name('admin.calendarmuslim.update');
+    Route::get('/admin/calendarmuslim/delete/{id}', [AdminCalendarmuslimController::class, 'delete'])->name('admin.calendarmuslim.delete');
+    /* окончание Admin для мусульманского календаря */
+
+
+    /* начало Admin для христианского календаря */
+
+    Route::get('/admin/calendarchrist/view', [AdminCalendarchristController::class, 'index'])->name('admin.calendarchrist.view');
+    Route::get('/admin/calendarchrist/add', [AdminCalendarchristController::class, 'add'])->name('admin.calendarchrist.add');
+    Route::post('/admin/calendarchrist/store', [AdminCalendarchristController::class, 'store'])->name('admin.calendarchrist.store');
+    Route::get('/admin/calendarchrist/edit/{id}', [AdminCalendarchristController::class, 'edit'])->name('admin.calendarchrist.edit');
+    Route::post('/admin/calendarchrist/update/{id}', [AdminCalendarchristController::class, 'update'])->name('admin.calendarchrist.update');
+    Route::get('/admin/calendarchrist/delete/{id}', [AdminCalendarchristController::class, 'delete'])->name('admin.calendarchrist.delete');
+
+    /* окончание Admin для христианского календаря */
 
 
 });

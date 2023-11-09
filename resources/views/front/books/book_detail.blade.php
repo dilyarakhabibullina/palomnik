@@ -123,7 +123,7 @@
 
                         <div class=" review-content">
                             <p class="mt-1 text-warning" style="margin-bottom:1px;">
-                                {{ $avgStar }}
+                                {{round($avgStar, 2)}}
                                 @for($i=1; $i<=$avgStar1; $i++)
                                     <span><i class="fa fa-star text-warning"></i></span>
                                 @endfor

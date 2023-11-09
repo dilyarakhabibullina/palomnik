@@ -1,6 +1,55 @@
 @extends('front.layout.app')
 
 @section('main_content')
+    <style>
+        .bg-animation {
+            animation: bg-animation 25s ease-in-out infinite;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            text-align: center;
+            background-image: url(uploads/slide.jpg); /* Фоновая картинка */
+            background-repeat: no-repeat;
+            border: 1px solid #BFE2FF;
+            margin: 20px 0;
+            height: 500px;
+            font-size: 26px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        @media (max-width: 620px) {
+            .bg-animation {
+                padding: 100px 20px;
+                font-size: 26px;
+            }
+        }
+        @keyframes bg-animation {
+            0% {
+                background-size: 120%;
+                background-position: 50% 50%
+            }
+            20% {
+                background-size: 150%;
+                background-position: 0 50%;
+            }
+            40% {
+                background-size: 110%;
+                background-position: 20% 80%;
+            }
+            60% {
+                background-size: 160%;
+                background-position: 60% 10%;
+            }
+            80% {
+                background-size: 120%;
+                background-position: 40% 70%;
+            }
+            100% {
+                background-size: 120%;
+                background-position: 50% 50%
+            }
+        }
+    </style>
+
     <div class="slider">
         <div class="slide-carousel owl-carousel">
             @foreach($slide_all as $item)
@@ -121,7 +170,7 @@
         </div>
     </div>
 
-        <div class="testimonial" style="background-image: url(uploads/slide2.jpg)">
+        <div class="testimonial bg-animation" >
             <div class="bg"></div>
             <div class="container">
                 <div class="row">
