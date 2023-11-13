@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminBookController;
 use App\Http\Controllers\Admin\AdminCalendarchristController;
 use App\Http\Controllers\Admin\AdminCalendarmuslimController;
 use App\Http\Controllers\Admin\AdminChurchController;
+use App\Http\Controllers\Admin\AdminCustomerController;
 use App\Http\Controllers\Admin\AdminDiscountController;
 use App\Http\Controllers\Admin\AdminDurationController;
 use App\Http\Controllers\Admin\AdminExcursionController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Admin\AdminGenreController;
 use App\Http\Controllers\Admin\AdminLangController;
 use App\Http\Controllers\Admin\AdminMosqueController;
 use App\Http\Controllers\Admin\AdminMuslimprayController;
+use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPlacevisitController;
@@ -24,6 +26,7 @@ use App\Http\Controllers\Admin\AdminPrayorderMuslimController;
 use App\Http\Controllers\Admin\AdminPublisherController;
 use App\Http\Controllers\Admin\AdminReligionController;
 use App\Http\Controllers\Admin\AdminRoomController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminTrebController;
@@ -169,8 +172,18 @@ Route::post('/admin/reset-password-submit', [AdminLoginController::class, 'reset
 Route::group(['middleware' =>['admin:admin']], function(){
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin_home');
 Route::get('/admin/edit-profile', [AdminProfileController::class, 'index'])->name('admin_profile');
+Route::get('/admin/setting', [AdminSettingController::class, 'index'])->name('admin_setting');
+Route::post('/admin/setting/update', [AdminSettingController::class, 'update'])->name('admin_setting_update');
 Route::post('/admin/edit-profile-submit', [AdminProfileController::class, 'profile_submit'])->name('admin_profile_submit');
 Route::get('/admin/slide/view', [AdminSlideController::class, 'index'])->name('admin_slide_view');
+
+Route::get('/admin/customers', [AdminCustomerController::class, 'index'])->name('admin_customer');
+Route::get('/admin/customer/change-status/{id}', [AdminCustomerController::class, 'change_status'])->name('admin_customer_change_status');
+Route::get('/admin/order/view', [AdminOrderController::class, 'index'])->name('admin_orders');
+Route::get('/admin/order/invoice/{id}', [AdminOrderController::class, 'invoice'])->name('admin_invoice');
+Route::get('/admin/order/delete/{id}', [AdminOrderController::class, 'delete'])->name('admin_order_delete');
+
+
 Route::get('/admin/slide/add', [AdminSlideController::class, 'add'])->name('admin_slide_add');
 Route::post('/admin/slide/store', [AdminSlideController::class, 'store'])->name('admin_slide_store');
 Route::get('/admin/slide/edit/{id}', [AdminSlideController::class, 'edit'])->name('admin_slide_edit');

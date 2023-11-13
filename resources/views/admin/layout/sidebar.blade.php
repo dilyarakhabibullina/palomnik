@@ -8,8 +8,10 @@
         </div>
 
         <ul class="sidebar-menu">
-            <li class="{{ Request::is('admin/home')||Request::is('admin/room/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}" ></i> <span>Панель</span></a></li>
-
+            <li class="{{ Request::is('admin/home')||Request::is('admin/room/view') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_home') }}" ></i> <span>Панель статистики</span></a></li>
+            <li class="{{ Request::is('admin/setting') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_setting') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Setting"><i class="fa fa-cog"></i> <span>Настройки</span></a></li>
+            <li class="{{ Request::is('admin/customers') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_customer') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Customers"><i class="fa fa-user-plus"></i> <span>Пользователи</span></a></li>
+            <li class="{{ Request::is('admin/order/*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin_orders') }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="Orders"><i class="fa fa-cart-plus"></i> <span>Заказы</span></a></li>
             <li class="nav-item dropdown {{ Request::is('admin/amenity/view')? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i class="fa fa-superpowers"></i><span>Комнаты</span></a>
                 <ul class="dropdown-menu">

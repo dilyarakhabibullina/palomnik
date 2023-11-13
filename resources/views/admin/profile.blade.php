@@ -21,7 +21,7 @@
                                     <input type="text" class="form-control" name="name" value="{{ Auth::guard('admin')->user()->name }}">
                                 </div>
                                 <div class="mb-4">
-                                    <label class="form-label">Адресс эл.почты *</label>
+                                    <label class="form-label">Адрес эл.почты *</label>
                                     <input type="text" class="form-control" name="email" value="{{ Auth::guard('admin')->user()->email }}">
                                 </div>
                                 <div class="mb-4">

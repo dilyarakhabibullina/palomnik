@@ -198,13 +198,13 @@
                         <img style="width: 450px;height: 250px" src=" {{ asset('uploads/excursions/'.$single_excursion_data->featured_photo) }}" alt="">
                         <div style="padding-top:8px;"></div>
                         <div class=" review-content">
-                            <p class="mt-1 text-warning" style="margin-bottom:1px;">
+                            <p class="mt-1 text-warning" style="margin-bottom:1px;" id="id_color1">
                                 {{round($avgStar, 2)}}
                                 @for($i=1; $i<=$avgStar1; $i++)
-                                    <span><i class="fa fa-star text-warning"></i></span>
+                                    <span><i class="fa fa-star text-warning" id="id_color1" ></i></span>
                                 @endfor
                             </p>
-                            <div class="text-danger" style="font-style: italic; margin-bottom:10px;"  >
+                            <div class="text-danger" style="font-style: italic; margin-bottom:10px;" id="id_color2" >
                                 {{ $reviewCount }}  {{trans_choice('отзыв|отзыва|отзывов',$reviewCount)}}
                             </div>
                         </div>
@@ -329,7 +329,7 @@
                     <label for="" style="margin-bottom:5px">Дети до 5 лет</label>
                     <input type="number" name="kids" class="form-control" min="0" max="30" placeholder="Дети до 14 лет">
                 </div>
-                <button type="submit" class="btn btn-danger">Добавить в корзину</button>
+                <button type="submit" class="btn btn-danger" id="id_btn_color1">Добавить в корзину</button>
             </form>
             </div>
           </div>
@@ -345,10 +345,10 @@
                         <div class=" review-content">
                             <img src="https://www.w3schools.com/howto/img_avatar.png" class="avatar ">
                             <span class="font-weight-bold ml-2">{{$review->name}}</span>
-                            <p style="color:#e91e63;">Опубликован : {{$review->created_at->format('d.m.y h:m:s') }}</p>
+                            <p id ="id_color2" style="color:#e91e63;">Опубликован : {{$review->created_at->format('d.m.y h:m:s') }}</p>
                             <p class="mt-1">
                                 @for($i=1; $i<=$review->star_rating; $i++)
-                                    <span><i class="fa fa-star text-warning"></i></span>
+                                    <span><i class="fa fa-star text-warning" id ="id_color1"></i></span>
                                 @endfor
                                 <span class="font ml-2">{{$review->email}}</span>
                             </p>
@@ -395,15 +395,15 @@
                         <div class="col-sm-6">
                             <div class="rate">
                                 <input type="radio" id="star5" class="rate" name="rating" value="5"/>
-                                <label for="star5" title="text">5 stars</label>
+                                <label for="star5"  title="text">5 stars</label>
                                 <input type="radio" checked id="star4" class="rate" name="rating" value="4"/>
-                                <label for="star4" title="text">4 stars</label>
+                                <label for="star4" id ="id_color1" title="text">4 stars</label>
                                 <input type="radio" id="star3" class="rate" name="rating" value="3"/>
-                                <label for="star3" title="text">3 stars</label>
+                                <label for="star3" id ="id_color1" title="text">3 stars</label>
                                 <input type="radio" id="star2" class="rate" name="rating" value="2">
-                                <label for="star2" title="text">2 stars</label>
+                                <label for="star2" id ="id_color1" title="text">2 stars</label>
                                 <input type="radio" id="star1" class="rate" name="rating" value="1"/>
-                                <label for="star1" title="text">1 star</label>
+                                <label for="star1" id ="id_color1" title="text">1 star</label>
                             </div>
                         </div>
                     </div>
@@ -413,7 +413,7 @@
                         </div>
                     </div>
                     <div class="mt-3 ">
-                        <button class="btn py-2 px-3 btn-danger">Подтведить
+                        <button class="btn py-2 px-3 btn-danger" id ="id_btn_color1">Подтведить
                         </button>
                     </div>
                 </form>

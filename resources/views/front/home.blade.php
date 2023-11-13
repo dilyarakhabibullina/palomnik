@@ -73,7 +73,7 @@
 
 
 
-
+    @if($global_setting_data->home_feature_status == 'Show')
     <div class="home-feature">
         <div class="container">
             <div class="row">
@@ -95,6 +95,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <div class="search-section">
         <div class="container">
@@ -136,12 +137,15 @@
         </div>
     </div>
 
+    @if($global_setting_data->home_room_status == 'Show')
     <div class="home-rooms">
         <div class="container">
 
             <div class="row">
                 @foreach($room_all as $item)
-
+                    @if($loop->iteration>$global_setting_data->home_room_total)
+                        @break
+                    @endif
                     <div class="col-md-3">
                         <div class="inner">
                             <div class="photo">
@@ -169,7 +173,9 @@
             </div>
         </div>
     </div>
+    @endif
 
+    @if($global_setting_data->home_testimonial_status == 'Show')
         <div class="testimonial bg-animation" >
             <div class="bg"></div>
             <div class="container">
@@ -202,9 +208,9 @@
                 </div>
             </div>
         </div>
+    @endif
 
-
-
+    @if($global_setting_data->home_latest_post_status == 'Show')
     <div class="blog-item">
         <div class="container">
             <div class="row">
@@ -215,7 +221,9 @@
             <div class="row">
 
                 @foreach($post_all as $item)
-
+                    @if($loop->iteration>$global_setting_data->home_latest_post_total)
+                        @break
+                    @endif
                     <div class="col-md-4">
                         <div class="inner">
                             <div class="photo">
@@ -238,6 +246,10 @@
             </div>
         </div>
     </div>
+    @endif
+
+
+
     @if($errors->any())
         @foreach($errors->all() as $error)
             <script>

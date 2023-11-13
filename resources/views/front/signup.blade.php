@@ -48,7 +48,7 @@
                             @endif
                         </div>
                         <div class="mb-3">
-                            <button type="submit" class="btn btn-primary bg-website">Подвердить</button>
+                            <button type="submit" class="btn btn-primary bg-website">Подтвердить</button>
                         </div>
                         <div class="mb-3">
                             <a href="{{ route('customer_login') }}" class="primary-color">Существующий пользователь? Войдите в систему</a>

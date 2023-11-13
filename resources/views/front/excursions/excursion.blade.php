@@ -2,15 +2,7 @@
 
 @section('main_content')
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        /* Add a gray background color with some padding */
-        body {
-            font-family: Arial;
-            padding: 20px;
-            background: #f1f1f1;
-        }
+
         /* Header/Blog Title */
         .header {
             padding: 30px;
@@ -110,7 +102,7 @@
         </div>
     </div>
 </div>
-
+    <div class="home-rooms">
 <div class="page-content room-detail  " style="background-color:lightgrey ;">
     <div class="container ">
         <div class="row">
@@ -127,7 +119,7 @@
 @endphp
 
 <div class="col-md-3">
-<div class="card flex-row ; " style="border-color: pink;box-shadow: 0 0 20px 0 #ddd;width: 820px;height: 420px ;padding:.5rem 1rem;margin-bottom:30px;border-radius: 30px;">
+<div class="card flex-row inner; " style="border-color: pink;box-shadow: 0 0 20px 0 #ddd;width: 820px;height: 420px ;padding:.5rem 1rem;margin-bottom:30px;border-radius: 30px;">
 <div class="photo " >
 <div class="photo" style= margin-bottom:10px;">
 <img style="width: 160px;height: 230px" src="{{ asset('uploads/excursions/'.$excursion->featured_photo) }}" alt="">
@@ -135,20 +127,20 @@
 
 
                                     <div class=" review-content">
-                                        <p class="mt-1 text-warning" style="margin-bottom:1px;">
+                                        <p class="mt-1 text-warning" id ="id_color1" style="margin-bottom:1px;">
                                             {{round($avgStar, 2)}}
                                             @for($i=1; $i<=$avgStar1; $i++)
-                                                <span><i class="fa fa-star text-warning"></i></span>
+                                                <span><i class="fa fa-star text-warning" id ="id_color1"></i></span>
                                             @endfor
                                         </p>
-                                        <div class="text-danger" style="font-style: italic; margin-bottom:20px;"  >
+                                        <div class="text-danger" style="font-style: italic; margin-bottom:20px;" id="id_color2" >
                                             {{ $reviewCount }}  {{trans_choice('отзыв|отзыва|отзывов',$reviewCount)}}
                                         </div>
                                     </div>
 
 
                                 <div class="button">
-                                    <a href="{{ route('excursion_detail',$excursion->id) }}" class="btn btn-danger">Подробнее</a>
+                                    <a href="{{ route('excursion_detail',$excursion->id) }}" class="btn btn-danger" id="id_btn_in_details" >Подробнее</a>
                                 </div>
                             </div>
                             <div class="text" style="width: 600px;height: 200px ;padding:10px 10px;margin-bottom:50px;">
@@ -156,24 +148,24 @@
                                      {{ $excursion->name }}
                                 </div>
                                 <div style="padding-top:5px;"></div>
-                                <div class="text-danger" style="font-style: italic;">
-                                    <td style="font-weight: bold;padding-right: 6px"><strong>Продолжительность:</strong> </td>
+                                <div class="text-danger" id ="id_color1" style="font-style: italic;">
+                                    <td  style="font-weight: bold;padding-right: 6px"><strong>Продолжительность:</strong> </td>
                                     <td>{{sum4_time($excursion->durationExcursion,'00:00') }} час. ;</td>
                                 </div>
                                 <div style="padding-top:5px;"></div>
-                                <div class="text-danger" style="font-style: italic;">
+                                <div class="text-danger" id ="id_color1" style="font-style: italic;">
                                     <td style="font-weight: bold;padding-right: 6px"><strong>График экскурсий:</strong> </td>
                                     <td> начало с {{date('d.m.y', strtotime($excursion->startDateExcursion))}} год. до {{date('d.m.y', strtotime($excursion->finishDateExcursion))}} год. ;</td>
                                 </div>
                                 <div style="padding-top:5px;"></div>
-                                <div class="text-danger" style="font-style: italic;">
+                                <div class="text-danger" id ="id_color1" style="font-style: italic;">
                                     <td style="font-weight: bold;padding-right: 6px"><strong>Период:</strong> </td>
                                     @foreach ($excursion->durations as $duration)
                                     {{sum4_time($duration->start,'00:00')}} - {{ sum4_time($duration->start,$excursion->durationExcursion)}} час. ;
                                     @endforeach
                                 </div>
                                 <div style="padding-top:5px;"></div>
-                                <div class="text-danger" style="font-style: italic; ">
+                                <div class="text-danger" id ="id_color1" style="font-style: italic; ">
                                     <td style="font-weight: bold;padding-right: 6px"><strong>По каким дням:</strong> </td>
                                     @foreach ($excursion->whatdays as $whatday)
                                         {{$whatday->name}} ;
@@ -219,25 +211,25 @@
                     </div>
                 @endforeach
             </div>
-            <div class="card col-lg-4 col-md-5 col-sm-12 right " style="background-color: white;border-color: pink; box-shadow: 0 0 20px 0 #ddd;border-radius: 30px;">
+            <div class="card col-lg-4 col-md-5 col-sm-12 right inner" style="background-color: white;border-color: pink; box-shadow: 0 0 20px 0 #ddd;border-radius: 30px;">
 
                 <div class="sidebar-container " id="sticky_sidebar" style="background-color:white ;border-color: pink;box-shadow: 0 0 20px 0 #ddd;border-radius: 30px;">
 
 
                     <form method="get" action="{{ url()->current() }}">
 
-                        <article class="filter-group">
-                            <header class="card-header">
+                        <article class="filter-group ">
+                            <header class="card-header ">
                                 <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true">
 
-                                    <h6 class="title text-danger ">Название экскурсии</h6>
+                                    <h6 class="title text-danger" id="id_color1">Название экскурсии</h6>
                                 </a>
                             </header>
 
                             <div class="filter-content collapse show" id="collapse_1" style="">
                                 <div class="card-body">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Введите название экскурсии" name="name">
+                                        <input type="text " class="form-control" placeholder="Введите название экскурсии" name="name">
                                     </div>
                                 </div> <!-- card-body.// -->
                             </div>
@@ -248,7 +240,7 @@
                             <header class="card-header">
                                 <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                    <h6 class="title text-danger">Дни экскурсий</h6>
+                                    <h6 class="title" id="id_color1">Дни экскурсий</h6>
                                 </a>
                             </header>
                             <div class="filter-content collapse show" id="collapse_2" style="">
@@ -269,7 +261,7 @@
                             <header class="card-header">
                                 <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                    <h6 class="title text-danger">Места посещений</h6>
+                                    <h6 class="title text-danger" id="id_color1" >Места посещений</h6>
                                 </a>
                             </header>
                             <div class="filter-content collapse show" id="collapse_2" style="">
@@ -291,7 +283,7 @@
                             <header class="card-header">
                                 <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                    <h6 class="title text-danger">Стоимость в рублях</h6>
+                                    <h6 class="title text-danger" id="id_color1" >Стоимость в рублях</h6>
                                 </a>
                             </header>
                             <div class="flex items-center mr-5">
@@ -306,7 +298,7 @@
                             <header class="card-header">
                                 <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                    <h6 class="title text-danger">Продолжительность в часах</h6>
+                                    <h6 class="title text-danger" id="id_color1" >Продолжительность в часах</h6>
                                 </a>
                             </header>
                             <div class="flex items-center mr-5">
@@ -321,13 +313,13 @@
                             <div style="padding-top:8px;"></div>
                             <div class="mb-4">
                                 <label class="form-label"></label>
-                                <button type="submit" class="btn btn-danger">Найти</button>
+                                <button type="submit" class="btn btn-danger" id ="id_btn_color1" >Найти</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
+        </div>
 
             </div>
         </div>

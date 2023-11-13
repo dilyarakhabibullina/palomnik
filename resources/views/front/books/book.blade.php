@@ -111,7 +111,7 @@
     </div>
 </div>
 
-<div class="page-content room-detail  " style="background-color:lightgrey ;">
+<div class="page-content room-detail  " ">
     <div class="container ">
         <div class="row">
             <div class="col-lg-8 col-md-7 col-sm-12 left ">
@@ -135,20 +135,20 @@
 
 
                                     <div class=" review-content">
-                                        <p class="mt-1 text-warning" style="margin-bottom:1px;">
+                                        <p class="mt-1 text-warning" id ="id_color1" style="margin-bottom:1px;">
                                             {{round($avgStar, 2)}}
                                             @for($i=1; $i<=$avgStar1; $i++)
-                                                 <span><i class="fa fa-star text-warning"></i></span>
+                                                 <span><i class="fa fa-star text-warning" id ="id_color1"></i></span>
                                             @endfor
                                         </p>
-                                        <div class="text-primary" style="font-style: italic; margin-bottom:20px;"  >
+                                        <div class="text-primary" style="font-style: italic; margin-bottom:20px;" id ="id_color2" >
                                             {{ $reviewCount }}  {{trans_choice('отзыв|отзыва|отзывов',$reviewCount)}}
                                         </div>
                                     </div>
 
 
                                 <div class="button">
-                                    <a href="{{ route('book_detail',$book->id) }}" class="btn btn-primary">Подробнее</a>
+                                    <a href="{{ route('book_detail',$book->id) }}" class="btn btn-primary" id="id_btn_in_details">Подробнее</a>
                                 </div>
                             </div>
                             <div class="text" style="width: 600px;height: 200px ;padding:10px 10px;margin-bottom:50px;">
@@ -156,7 +156,7 @@
                                      {{ $book->title }}
                                 </div>
                                 <div style="padding-top:8px;"></div>
-                                <div class="text-primary" style="font-style: italic;">
+                                <div class="text-primary" style="font-style: italic;" id="id_color1">
 
                                     @foreach ($book->authors as $author)
                                         {{$author->fullname}}
@@ -225,7 +225,7 @@
                                 <header class="card-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true">
 
-                                        <h6 class="title">Название книги</h6>
+                                        <h6 class="title" id="id_color1" >Название книги</h6>
                                     </a>
                                 </header>
 
@@ -242,7 +242,7 @@
                                 <header class="card-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                        <h6 class="title">Издательство</h6>
+                                        <h6 class="title" id="id_color1" >Издательство</h6>
                                     </a>
                                 </header>
                                 <div class="filter-content collapse show" id="collapse_2" style="">
@@ -263,7 +263,7 @@
                                 <header class="card-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                        <h6 class="title">Язык</h6>
+                                        <h6 class="title" id="id_color1" >Язык</h6>
                                     </a>
                                 </header>
                                 <div class="filter-content collapse show" id="collapse_2" style="">
@@ -284,7 +284,7 @@
                                 <header class="card-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                        <h6 class="title">Религия</h6>
+                                        <h6 class="title" id="id_color1" >Религия</h6>
                                     </a>
                                 </header>
                                 <div class="filter-content collapse show" id="collapse_2" style="">
@@ -305,7 +305,7 @@
                                 <header class="card-header">
                                     <a href="#" data-toggle="collapse" data-target="#collapse_2" aria-expanded="true">
 
-                                        <h6 class="title">Жанр</h6>
+                                        <h6 class="title" id="id_color1" >Жанр</h6>
                                     </a>
                                 </header>
                                 <div class="filter-content collapse show" id="collapse_2" style="">
@@ -322,7 +322,7 @@
                             </artical> <!-- filter-group .// -->
                             <artical class="filter-group">
                                 <div class="flex items-center mr-5">
-                                    <label>Стоимость от</label>
+                                    <label >Стоимость от</label>
                                     <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 pl-10 p-2.5" style="width:100px" placeholder="0 " type="number" name="priceMin">
                                     <span class="mx-1 text-gray-500">до</span>
                                     <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  pl-10 p-2.5" style="width:100px" placeholder="10000" type="number" name="priceMax">
@@ -342,7 +342,7 @@
                                 <div style="padding-top:8px;"></div>
                                 <div class="mb-4">
                                     <label class="form-label"></label>
-                                    <button type="submit" class="btn btn-primary">Найти</button>
+                                    <button type="submit" class="btn btn-primary book-now" id="id_btn_color1">Найти</button>
                                 </div>
                             </div>
                         </form>

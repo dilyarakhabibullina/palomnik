@@ -77,7 +77,7 @@
                         </div>
 
                         </br>
-                        <button type="submit" class="btn btn-success">Отправить</button>
+                        <button type="submit" class="btn btn-success" id= "id_btn_color1" >Отправить</button>
 
                     </form>
 
